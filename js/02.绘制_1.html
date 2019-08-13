@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Document</title>
+        <style>
+            #canvas {
+                border: 1px solid gray;
+            }
+        </style>
+    </head>
+
+    <body>
+        <!-- 画布 -->
+        <canvas id="canvas" width="500" height="500"></canvas>
+
+        <script>
+            let canvas = document.getElementById('canvas');
+            // 画笔
+            let paint = canvas.getContext('2d');
+            // 画笔颜色
+            paint.fillStyle='red'; //实心
+            paint.strokeStyle = 'blue'; //空心
+            // 画笔宽度
+            paint.lineWidth = 1;
+
+            paint.strokeRect(200,200,100,50);
+            // paint.translate(200,200)
+            // paint.rotate(30*Math.PI/180)
+            // 方块
+            // paint.strokeRect(10,10,100,50);
+            paint.fillRect(200,200,100,50);
+
+           
+
+        </script>
+
+
+    </body>
+
+</html>

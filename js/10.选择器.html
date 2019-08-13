@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <ul class="list">
+        <li>1</li>
+        <li class="item2">2</li>
+        <li>3</li>
+        <li>4</li>
+    </ul>
+
+    <ul class="list2">
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+        <li>4</li>
+    </ul>
+
+
+    <script src="./lib/jquery-3.4.1.js"></script>
+    <script>
+        $('.list>li:first').css('background',"red")
+        $('.list>li:last').css('background',"blue")
+        $('.list>li:not(.item2)').css('color',"yellow")
+
+        $('.list2>li:even').css({background:"red", color:"#fff"})
+        $('.list2>li:odd').css({background:"blue", color:"#000"})
+        
+        
+    </script>
+</body>
+</html>

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div class="box"></div>
+    <div class="box1"></div>
+    <script>
+        var box = document.querySelector('.box')
+        var box1 = document.querySelector('.box1')
+        var str = '<a href="#adfdf">qq.com</a>'
+        // 设置
+        box.innerHTML = str
+        box1.innerText = str
+
+
+        // 获取
+        console.log( box.innerHTML )
+        console.log( box.innerText )
+    
+    
+    </script>
+</body>
+</html>

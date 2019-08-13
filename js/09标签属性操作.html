@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div class="box" title="这是一个盒子">box</div>
+
+    <script>
+        var box =  document.querySelector('.box')
+        // 获取属性值
+        var tValue =  box.getAttribute('title')
+        console.log(tValue)
+        // 设置属性值
+        box.setAttribute('title', 'box title')
+        box.setAttribute('class','box box1 box2')
+        box.setAttribute('name','bName')
+
+        box.removeAttribute('name')
+        box.removeAttribute('title')
+    
+    
+    </script>
+</body>
+</html>

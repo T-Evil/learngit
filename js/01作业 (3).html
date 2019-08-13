@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Document</title>
+        <style>
+          .colors,.colors2,.colors3, .colors4, .colors5{
+              list-style: none;
+          }
+          .colors>li, .colors2>li, .colors3>li,
+             .colors4>li, .colors5>li{
+              display: inline-block;
+              width: 100px;height: 100px;
+              text-align: center;
+              line-height: 100px;
+              color: rgb(185, 184, 184);
+              border-radius: 50%;
+              border: 5px solid rgb(209, 209, 209);
+          }
+          li.red{
+              background: red;
+              border-color: red;
+          }
+          li.blue{
+              background: blue;
+              border-color: blue;
+
+          }
+          li.green{
+              background: green;
+              border-color: green;
+
+          }
+          li.orange{
+              background: orange;
+              border-color: orange;
+
+          }
+        </style>
+    </head>
+
+    <body>
+        <ul class="colors">
+            <li>red</li>
+            <li>blue</li>
+            <li>green</li>
+            <li>orange</li>
+        </ul>
+
+        <ul class="colors2">
+            <li>red</li>
+            <li>blue</li>
+            <li>green</li>
+            <li>orange</li>
+        </ul>
+        <ul class="colors3">
+            <li>orange</li>
+            <li>red</li>
+            <li>green</li>
+            <li>blue</li>
+        </ul>
+
+        <ul class="colors4">
+            <li>red</li>
+            <li>orange</li>
+            <li>green</li>
+            <li>blue</li>
+            
+        </ul>
+
+        <ul class="colors5">
+            <li>red</li>
+            <li>orange</li>
+            <li>green</li>
+            <li>blue</li>
+            <span>sdf</span>
+        </ul>
+
+        <script>
+            // 方式一
+            var items =  document.querySelectorAll(".colors>li")
+            for(var i=0; i<items.length; i++){
+                var li = items[i]
+                var color = li.innerText
+                li.style.background = color
+                li.style.borderColor =color
+            }
+
+            // 方式二
+            var items2 =  document.querySelectorAll(".colors2>li")
+            for(var i=0; i<items2.length; i++){
+                var li = items2[i]
+                var color = li.innerText
+                li.className = color
+            }
+
+            // 方式三
+            var color3 = document.getElementsByClassName('colors3')[0]
+            var cs =  color3.childNodes
+            for(var i=0; i<cs.length; i++){
+                var el =  cs[i]
+                // console.log(el.nodeType)
+                // console.log(el.nodeName)
+                if('LI' == el.nodeName){
+                    // 设置颜色
+                    el.className = el.innerText
+                }
+            }
+
+            // 方式四：
+            var color4 =  document.getElementsByClassName('colors4')[0]
+            var el =  color4.firstChild
+            //如果没有兄弟节点就退出循环
+            while(null != el){
+                // 分离出文本节点
+                if('LI' !=  el.nodeName){
+                    el = el.nextSibling
+                    continue
+                }
+                    el.className = el.innerText
+
+                    el = el.nextSibling
+            }
+            // while( 3 == el.nodeType ){
+        //     while( true ){
+        //         if('LI' != el.nodeName ){
+        //             el =  el.nextSibling
+        //         }else{
+        //             break
+        //         }
+                
+        //     }
+        //    el.className = el.innerHTML
+
+        //    el = el.nextSibling
+        //    while( true ){
+        //         if('LI' != el.nodeName ){
+        //             el =  el.nextSibling
+        //         }else{
+        //             break
+        //         }
+                
+        //     }
+        //    el.className = el.innerHTML
+
+        //    el = el.nextSibling
+        //    while( true ){
+        //         if('LI' != el.nodeName ){
+        //             el =  el.nextSibling
+        //         }else{
+        //             break
+        //         }
+                
+        //     }
+        //    el.className = el.innerHTML
+
+        //    el = el.nextSibling
+        //    while( true ){
+        //         if('LI' != el.nodeName ){
+        //             el =  el.nextSibling
+        //         }else{
+        //             break
+        //         }
+                
+        //     }
+        //    el.className = el.innerHTML
+
+            // 方式五
+            var color5 = document.querySelector('.colors5')
+            var el =  color5.lastElementChild
+            
+            while(el){
+                // if('LI' == el.nodeName){
+                //     el.className = el.innerText
+                //     el =  el.previousSibling
+                //     continue
+                // }
+                // el =  el.previousSibling
+                switch (el.nodeName) {
+                    case 'LI':
+                        el.className = el.innerText
+                    default: 
+                        el =  el.previousSibling
+                }
+
+            }
+            
+           
+
+
+
+        </script>
+
+    </body>
+</html>

@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Document</title>
+        <style>
+            .progress {
+                width: 300px;
+                /* height: 2px; */
+                background: rgba(128, 128, 128, 0.322);
+                margin: 10px 0;
+
+            }
+
+            .cProgress {
+                height: 2px;
+                width: 0;
+                background: red;
+            }
+        </style>
+    </head>
+
+    <body>
+        <audio id="myaudio" src="./src/01.aac" controls autoplay='autoplay' hidden>
+            您的浏览器不支持 audio 标签。
+        </audio>
+        <div>
+            <span class="currentTime">0:0</span>
+            <span>/</span>
+            <span class="totalTime"></span>
+        </div>
+        <!-- 进度条 -->
+        <div class="progress">
+            <div class="cProgress"></div>
+        </div>
+
+        <ul class="audiolist">
+            <li>
+                <input type="radio" name="audioList" value="./src/01.aac" id="audiolistItem1">
+                <label for="audiolistItem1">三番</label>
+            </li>
+            <li>
+
+                <input type="radio" name="audioList" value="./src/02.mp3" id="audiolistItem2">
+                <label for="audiolistItem2">爱如潮水</label>
+            </li>
+
+        </ul>
+
+
+        <button class="playBtn">播放</button>
+
+
+        <script>
+            window.onload = function () {
+
+                let playBtn = document.querySelector('.playBtn')
+                let myAudio = document.getElementById('myaudio')
+                let tt = document.querySelector('.totalTime')
+                let ct = document.querySelector('.currentTime')
+                let cp = document.querySelector('.cProgress')
+                let pp = document.querySelector('.progress')
+                let list = document.querySelector('.audiolist')
+
+                getTotal()
+                function getTotal() {
+
+                    if (4 == myAudio.readyState) {
+                        let tM = myAudio.duration / 60 //总长度分钟
+                        tM += ''
+                        let arr = tM.slice(0, tM.indexOf('.') + 3).split('.')
+                        tt.innerText = `${arr[0]}:${arr[1]}`
+                    } else {
+                        let t2 = setInterval(() => {
+                            if (4 == myAudio.readyState) {
+                                let tM = myAudio.duration / 60 //总长度分钟
+                                tM += ''
+                                let arr = tM.slice(0, tM.indexOf('.') + 3).split('.')
+                                tt.innerText = `${arr[0]}:${arr[1]}`
+                                clearInterval(t2)
+                            }
+                        }, 50);
+                    }
+
+                }
+                // 播放
+                let playTime = {
+                    m: 0,
+                    s: 0
+                }
+
+                let t1 = null
+                playBtn.onclick = function () {
+
+                    //播放
+                    if (myAudio.paused) {
+                        myAudio.play()
+                        this.innerText = '暂停'
+                        t1 = setInterval(() => {
+                            let s = Math.round(myAudio.currentTime)
+                            playTime.s = s
+                            playTime.m = Math.floor(playTime.s / 60)
+                            playTime.s = Math.floor(playTime.s % 60)
+                            ct.innerText = `${playTime.m}:${playTime.s}`
+
+                            // 求出每秒的进度宽度
+                            let currWidth = s * (pp.offsetWidth / myAudio.duration)
+
+                            cp.style.width = currWidth + "px"
+                        }, 1000);
+
+
+                    } else {
+                        //暂停
+                        myAudio.pause()
+                        this.innerText = '播放'
+                        clearInterval(t1)
+                    }
+                }
+
+                list.onclick = function (ev) {
+                    ev = ev || window.event
+                    if ('INPUT' == ev.target.nodeName) {
+                        //    let src = ev.target.value
+                        myAudio.src = ev.target.value
+                        getTotal()
+                        myAudio.pause()
+                    }
+                }
+
+
+
+
+            }
+
+        </script>
+    </body>
+
+</html>

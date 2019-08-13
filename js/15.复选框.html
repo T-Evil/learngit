@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Document</title>
+        <style>
+            label,
+            [type='checkbox'] {
+                cursor: pointer;
+                user-select: none;
+            }
+        </style>
+    </head>
+
+    <body>
+
+        <div class="colorGroup">
+            <input type="checkbox" name="colors" value="red" id="red">
+            <label for="red">red</label>
+            <input type="checkbox" name="colors" value="blue" id="blue">
+            <label for="blue">blue</label>
+            <input type="checkbox" name="colors" value="green" id="green">
+            <label for="green">green</label>
+            <input type="checkbox" name="colors" value="pink" id="pink">
+            <label for="pink">pink</label>
+        </div>
+
+
+        <script>
+            var colors = document.querySelectorAll('[type="checkbox"]')
+            for (var i = 0; i < colors.length; i++) {
+                var el = colors[i]
+                el.onchange = function () {
+                    for (var i = 0; i < colors.length; i++) {
+                        var el = colors[i]
+                        console.log(el.value + " ," + el.checked)
+                    }
+                }
+            }
+
+        </script>
+    </body>
+
+</html>

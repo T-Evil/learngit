@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Document</title>
+    </head>
+
+    <body>
+        <ul class="sc">
+            <li>苹果</li>
+            <li>西瓜</li>
+            <li>哈密瓜</li>
+            <li>桃子</li>
+            <li>北瓜</li>
+        </ul>
+        <input type="text" class="userinput">
+
+        <script src="./lib/jquery-3.4.1.js"></script>
+        <script>
+
+            $('.userinput').change((ev) => {
+                if(!$(ev.target).val()){
+                    return
+                }
+                const EL_STR = `<li>${$(ev.target).val()}</li>`
+                // $('.sc').append(EL_STR)
+                // $('.sc>li:last').after(EL_STR)
+                // $('.sc>li:last').before(EL_STR)
+                // $(EL_STR).insertAfter($('.sc>li:eq(1)'))
+                $(EL_STR).insertBefore($('.sc>li:eq(1)'))
+                console.log()
+
+                $(ev.target).val('')
+            })
+        </script>
+    </body>
+
+</html>

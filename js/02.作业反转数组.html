@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var arr = [1,2,5,76,8,9]
+        fanZhuan(arr)
+        console.log(arr);
+        
+
+
+        function fanZhuan( arr ){
+            var arr1 = []
+            // 两个数组长度一样
+            arr1.length = arr.length
+            var index = arr.length - 1
+            for(var i=0; i<arr.length; i++){
+               arr1[ index-- ] = arr[i]
+            }
+            console.log(arr1)
+            
+        }
+    
+    
+    </script>
+</body>
+</html>

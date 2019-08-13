@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Document</title>
+        <style>
+            ul {
+                list-style: none;
+            }
+
+            ul>li {
+                display: inline-block;
+                padding: 6px 16px;
+                border-radius: 5px;
+                margin-right: 10px;
+                margin-bottom: 10px;
+                /* 不让用户选中 */
+                user-select: none;
+                width: 80px;
+                position: relative;
+
+            }
+
+            ul>li.randomActive {
+                background: yellow;
+               
+            }
+
+            .boy {
+                background: red;
+                color: #fff;
+            }
+
+            .girl {
+                background: green;
+                color: #fff;
+            }
+
+            ul>li>span,ul>li>img{
+                vertical-align: middle;
+            }
+
+            ul>li>img{
+                position: absolute;
+                right: 2px; top: 5px; 
+                padding: 2px;
+                display: none;
+                cursor: pointer;
+            }
+            
+            ul>li:hover>img{ display: inline-block; }
+
+
+
+            .btnGroup {
+                text-align: center;
+            }
+
+            .btnGroup>button {
+                background: #fff;
+                padding: 10px 20px;
+                border: 1px solid gray;
+                outline: none;
+                cursor: pointer;
+            }
+
+            button.startBtn {
+                border-color: blue;
+                color: blue;
+            }
+
+            button.startBtn:hover {
+                box-shadow: 0 0 8px rgba(162, 162, 250, 0.753);
+            }
+
+            button.endBtn {
+                border-color: #ad0202;
+                color: #ad0202;
+            }
+
+            button.endBtn:hover {
+                box-shadow: 0 0 8px rgba(173, 2, 2, 0.439);
+            }
+
+            .name,.age, select, [type="date"], .inputGroup>button{
+                box-sizing: border-box;
+                width: 300px;
+                display: block;
+                margin-bottom: 10px;
+                padding: 6px 12px;
+            }
+            label{ cursor: pointer; }
+            .sexGroup{ user-select: none; }
+
+        </style>
+    </head>
+
+    <body>
+        <ul class='list'>
+            <!-- <li class="boy" title="19">
+                <span>小明</span>
+                <img src="./del2.png" alt="">
+            </li> -->
+            
+        </ul>
+
+
+        <div class="btnGroup">
+            <button class="startBtn">开始</button>
+            <button class="endBtn">结束</button>
+        </div>
+        <div class="inputGroup">
+            <input type="text" class="name" placeholder="姓名">
+            <input type="number" class="age" placeholder="年龄">
+            <div class="sexGroup">
+                <input type="radio" name="sex" id="man" value="男" checked>
+                <label for="man">男</label>
+                <input type="radio" name="sex" id="woman" value="女">
+                <label for="woman">女</label>
+            </div>
+            <select class="xl">
+                <option value="本科" selected>本科</option>
+                <option value="专科">专科</option>
+                <option value="高中">高中</option>
+                <option value="初中">初中</option>
+            </select>
+            <input type="date" placeholder="请输入时间">
+            <button class="addUserBtn">添加</button>
+        </div>
+
+
+
+        <script>
+            var addUserBtn = document.querySelector('.addUserBtn')
+            var inputSex = '男' //如果单选按钮按下这个变量给实时的收到这个变化值
+            // //生成列表
+            var tLength = createTable()
+            
+            // randomActive
+            var list = document.querySelector('.list')
+            var sBtn = document.querySelector('.startBtn')
+            var eBtn = document.querySelector('.endBtn')
+            var t1 = null
+            var prevSelect = -1 //上一次选中的人
+
+            // 添加新用户
+            addUserBtn.onclick =function(){
+               var username =  document.querySelector('.name')
+               var age =  document.querySelector('.age')
+               var xl =  document.querySelector('.xl')
+               var date =  document.querySelector('[type="date"]')
+                if(!username.value || !age.value || !date.value){
+                    alert('请输入。。。')
+                    return
+                }
+                var obj = { 
+                    name: username.value, 
+                    sex: inputSex, 
+                    age: parseInt(age.value), 
+                    eg: xl.value, 
+                    biye: date.value 
+                }
+
+                console.log(obj)
+                var key = new Date().getTime()
+                try{
+                   var strObj = JSON.stringify(obj)
+                }catch(e){
+                    console.log('json序列化失败')
+                }
+                localStorage.setItem(key,strObj)
+                 tLength = createTable()
+                // console.log(createTable())
+            }
+            
+
+
+             // 给单选框添加事件
+             getSex()
+
+
+            // 开始点名
+            sBtn.onclick = function () {
+                dianming()
+            }
+            // 停止点名
+            eBtn.onclick = function () {
+                clearInterval(t1)
+            }
+
+            function dianming() {
+                if (null != t1) {
+                    clearInterval(t1)
+                }
+                var listItems = list.children
+
+                t1 = setInterval(function () {
+                    var randomNum = Math.random()
+                    randomNum = randomNum * tLength
+                    // 取整
+                    var index = Math.floor(randomNum)
+                    if (-1 != prevSelect) {
+                        var className = listItems[prevSelect].className
+                        listItems[prevSelect].className = (-1 != className.indexOf('boy')) ? "boy" : 'girl'
+
+                    }
+
+                    listItems[index].className += ' randomActive'
+                    prevSelect = index
+                }, 200);
+            }
+
+            function createTable() {
+                var list = document.querySelector('.list')
+                list.innerHTML=""
+                // 获取用户列表数据
+                var userList =  getList()
+                for (var i = 0; i < userList.length; i++) {
+                    var user = userList[i]
+                    var li = document.createElement('li')
+                    li.className = user.sex == '男' ? 'boy' : 'girl'
+                    li.setAttribute('title', user.age)
+                    li.innerHTML = `<span>${user.name}</span>`
+                    li.innerHTML += `<img src="./del2.png" alt="" onclick="getindex(${i})">`
+                    list.appendChild(li)
+                }
+                return userList.length
+            }
+            // 删除按钮点击
+            function getindex(index){
+                var listData =  getList()
+                var str =  JSON.stringify(listData[index])
+                var i=0;
+                do{
+                   var key =  localStorage.key(i++)
+                   var value = localStorage.getItem(key)
+                    if(str == value){
+                        // 删除指定的用户
+                        localStorage.removeItem(key)
+                        // 刷新界面
+                        tLength = createTable()
+                        return
+                    }
+                }while(key)
+            }
+            
+            // 给单选按钮添加点击事件
+            function getSex(){
+                var ss = document.querySelectorAll('[name="sex"]')
+                for(var i=0; i<ss.length; i++){
+                    ss[i].onclick = function(ev){
+                        inputSex = ev.target.value
+                    }
+                }
+            }
+
+
+            // 从 本地存储中获取数据
+            function getList(){
+                var list = []
+                var length =  localStorage.length
+                for(var i=0;i<length; i++){
+                    var key = localStorage.key(i)
+                    var strValue = localStorage.getItem(key)                    
+                    try {
+                        var obj = JSON.parse(strValue)
+                    } catch (error) {
+                        console.log('json解析时出错')
+                    }
+                    list.push(obj)
+                }
+                return list
+            }
+
+
+                        /*
+            userList = [
+                { name: '黄海丽', sex: '女', age: 26, eg: '大专', biye: "2019-10-31" },
+                { name: '张小波', sex: '男', age: 23, eg: '自考大学', biye: "2019-10-31" },
+                { name: '张奇', sex: '男', age: 22, eg: '高中', biye: "2019-10-31" },
+                { name: '明尊通', sex: '男', age: 23, eg: '大专', biye: "2019-10-31" },
+                { name: '王照翔', sex: '男', age: 27, eg: '本科', biye: "2019-10-31" },
+                { name: '刘玮航', sex: '男', age: 22, eg: '大专', biye: "2019-10-31" },
+                { name: '丁义', sex: '男', age: 22, eg: '', biye: "2019-10-31" },
+                { name: '曾淦', sex: '男', age: 22, eg: '', biye: "2019-10-31" },
+                { name: '廖焕军', sex: '男', age: 25, eg: '', biye: "2019-10-31" },
+                { name: '刘龙光', sex: '男', age: 28, eg: '', biye: "2019-10-31" },
+                { name: '唐英海', sex: '男', age: 24, eg: '', biye: "2019-10-31" },
+                { name: '陈轩纬', sex: '男', age: 24, eg: '', biye: "2019-10-31" },
+                { name: '伍开朗', sex: '男', age: 23, eg: '', biye: "2019-10-31" },
+                { name: '陈曦', sex: '男', age: 25, eg: '', biye: "2019-10-31" },
+                { name: '裴宇欣', sex: '男', age: 23, eg: '', biye: "2019-10-31" },
+                { name: '陈雅强', sex: '男', age: 24, eg: '', biye: "2019-10-31" },
+                { name: '朱中兴', sex: '男', age: 27, eg: '', biye: "2019-10-31" },
+                { name: '何泽鑫', sex: '男', age: 25, eg: '', biye: "2019-10-31" },
+                { name: '黄经桐', sex: '男', age: 27, eg: '', biye: "2019-10-31" },
+                { name: '周清', sex: '男', age: 26, eg: '', biye: "2019-10-31" },
+                { name: '李佼俊', sex: '男', age: 26, eg: '', biye: "2019-10-31" },
+                { name: '谢华辉', sex: '男', age: 23, eg: '', biye: "2019-10-31" },
+                { name: '胡维妮', sex: '女', age: 24, eg: '', biye: "2019-10-31" },
+                { name: '孙露先', sex: '男', age: 23, eg: '', biye: "2019-10-31" },
+                { name: '李亮', sex: '男', age: 25, eg: '', biye: "2019-10-31" },
+                { name: '郑曙洋', sex: '男', age: 24, eg: '', biye: "2019-10-31" },
+                { name: '林家豪', sex: '男', age: 23, eg: '', biye: "2019-10-31" },
+                { name: '余尧', sex: '男', age: 27, eg: '', biye: "2019-10-31" },
+                { name: '刘梓川', sex: '男', age: 22, eg: '', biye: "2019-10-31" },
+                { name: '奉鑫', sex: '男', age: 24, eg: '', biye: "2019-10-31" },
+                { name: '但宇村', sex: '男', age: 24, eg: '', biye: "2019-10-31" },
+                { name: '王森', sex: '男', age: 21, eg: '', biye: "2019-10-31" },
+                { name: '毛朋', sex: '男', age: 24, eg: '', biye: "2019-10-31" },
+                { name: '冯南俭', sex: '男', age: 22, eg: '', biye: "2019-10-31" },
+                { name: '宋一凡', sex: '男', age: 26, eg: '', biye: "2019-10-31" },
+                { name: '谭燕燕', sex: '女', age: 26, eg: '', biye: "2019-10-31" },
+                { name: '江松满', sex: '男', age: 22, eg: '', biye: "2019-10-31" },
+                { name: '陈棉x', sex: '男', age: 23, eg: '', biye: "2019-10-31" },
+                { name: '肖金辛', sex: '男', age: 23, eg: '', biye: "2019-10-31" },
+                { name: '扬杰腾', sex: '男', age: 29, eg: '', biye: "2019-10-31" },
+                { name: '汤金超', sex: '男', age: 25, eg: '', biye: "2019-10-31" },
+                { name: '巩靖宇', sex: '男', age: 20, eg: '', biye: "2019-10-31" },
+                { name: '李欣原', sex: '男', age: 22, eg: '', biye: "2019-10-31" },
+                { name: '扬永帅', sex: '男', age: 26, eg: '', biye: "2019-10-31" },
+                { name: '李培鹏', sex: '男', age: 25, eg: '', biye: "2019-10-31" },
+                { name: '石娟', sex: '男', age: 20, eg: '', biye: "2019-10-31" },
+                { name: '刘硕', sex: '男', age: 27, eg: '', biye: "2019-10-31" },
+                { name: '钱骏', sex: '男', age: 23, eg: '', biye: "2019-10-31" },
+                { name: '蒋贤', sex: '男', age: 25, eg: '', biye: "2019-10-31" },
+                { name: '李扬', sex: '男', age: 23, eg: '', biye: "2019-10-31" },
+                { name: '黄中憬', sex: '男', age: 24, eg: '', biye: "2019-10-31" },
+                { name: '胡锦航', sex: '男', age: 22, eg: '', biye: "2019-10-31" },
+                { name: '李思思', sex: '女', age: 21, eg: '', biye: "2019-10-31" },
+                { name: '雷杰', sex: '男', age: 28, eg: '', biye: "2019-10-31" },
+                { name: '孙泽华', sex: '男', age: 27, eg: '', biye: "2019-10-31" },
+                { name: '谢贤堂', sex: '男', age: 23, eg: '', biye: "2019-10-31" },
+                { name: '王梦阳', sex: '男', age: 22, eg: '', biye: "2019-10-31" },
+                { name: '郭豪', sex: '男', age: 23, eg: '', biye: "2019-10-31" },
+
+            ]
+*/
+            // save(userList)
+            function save(userList) {
+                // console.log(new Date().getTime())
+                // console.log(JSON.stringify(userList[0]))
+                // localStorage.setItem('')
+                var list = userList.concat([])
+                console.log(list)
+
+                var t1 = setInterval(function () {
+                    var item = list.pop()
+                    var key = new Date().getTime()
+                    try {
+                        var value = JSON.stringify(item)
+                    } catch (error) {
+                        console.log('JSON解析出错！')
+                    }
+                    localStorage.setItem(key, value)
+                    if (0 == list.length) {
+                        clearInterval(t1)
+                    }
+                }, 1)
+            }
+        </script>
+    </body>
+
+</html>

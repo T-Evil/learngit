@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Document</title>
+    </head>
+
+    <body>
+
+
+
+
+        <script>
+            let xhr = new XMLHttpRequest()
+            xhr.open('post', 'http://192.168.5.4/0624/fuxi.php', true)
+            xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+            xhr.send('name=xiaohong')
+            xhr.onreadystatechange = function(){
+                if(4 == xhr.readyState && 200 == xhr.status){
+                    console.log(xhr.responseText)
+                }
+            }
+
+
+            // ajax({
+            //     method: 'post',
+            //     url: 'http://192.168.5.4/0624/fuxi.php',
+            //     data: 'name=xiaoming',
+            //     callback: (err, res) => {
+            //         if (err) {
+            //             console.log(err)
+            //             return
+            //         }
+            //         console.log(res)
+            //     }
+            // })
+
+
+            // 
+            function ajax(opt) {
+                
+                if ('get' == opt.method || 'GET' == opt.method) {
+                    opt.url += '?' + opt.data
+                }
+                // 1.创建请求对象
+                let xhr = new XMLHttpRequest()
+                //2. 设置请求参数
+                xhr.open('post', opt.url, true)
+                console.log(opt)
+                //设置请求头
+                xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+                // 3. 发送请求
+                xhr.send(opt.data)
+                // xhr.send()
+                // 4. 监听服务器端响应
+                xhr.onreadystatechange = function () {
+                    if (4 == this.readyState && 200 == this.status) {
+                        opt.callback(null, this.responseText)
+                    } else if (4 == this.readyState && 200 != this.status) {
+                        opt.callback({
+                            httpcode: this.status
+                        }, null)
+                    }
+                }
+            }
+
+
+
+        </script>
+    </body>
+
+</html>

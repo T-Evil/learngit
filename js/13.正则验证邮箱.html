@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Document</title>
+        <style>
+            .errInput{
+                border-color: red;
+            }
+        
+        </style>
+    </head>
+
+    <body>
+        <input type="text" placeholder="请输入邮箱" class="email" />
+        <script>
+            var eInput = document.querySelector('.email')
+            eInput.onchange = function (ev) {
+                // ev = ev || window.event
+                // ev.target.value
+                // this.value
+                var re = /^\w{1,}@[a-z0-9]+\.[a-z]{2,6}$/;
+                if( !re.test(this.value)){
+                    this.className = "email errInput"
+                }else{
+                    this.className = "email"
+                }
+            }
+
+        </script>
+    </body>
+
+</html>

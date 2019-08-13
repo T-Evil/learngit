@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // ES6
+        // 类语法
+        class Person{
+            // 构造函数
+            constructor(name,age,sex){
+                this.name = name
+                this.age = age
+                this.sex = sex
+            }
+            say(){
+                console.log(this.name+","+this.age)
+            }
+            run(){
+                console.log(this.name+" run...")
+            }
+        }
+
+        var p1 = new Person('213',23,"123")
+        var p2 = new Person('213',23,"33323")
+        console.log(p1)
+        console.log(p2)
+        p1.say()
+        p2.run()
+        
+        
+    </script>
+</body>
+</html>

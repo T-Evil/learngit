@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Document</title>
+    </head>
+
+    <body>
+        <ul class="list">
+            <li>red</li>
+            <li>pink</li>
+            <li>yellow</li>
+            <li>orange</li>
+        </ul>
+
+
+
+        <script>
+            var ol =  document.querySelector('ul.list')
+            var el1 =  firstNode(ol)
+            var el2 =  lastNode(ol)
+            // console.log(el1)
+            // console.log(el2)
+            console.log( nextNode(el1) )
+            console.log( prevNode(el2) )
+
+
+            // 获取第一个子元素
+            function firstNode(element) {
+                return element.firstElementChild || element.firstChild;
+            }
+            // 获取最后一个子元素
+            function lastNode(element) {
+                return element.lastElementChild || element.lastChild;
+            }
+            // 获取下一个兄弟节点
+            function nextNode(element) {
+                return element.nextElementSibling || element.nextSibling;
+            }
+            // 获取上一个兄弟节点
+            function prevNode(element) {
+                return element.previousElementSibling || element.previousSibling;
+            }
+
+        </script>
+    </body>
+
+</html>

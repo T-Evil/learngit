@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Document</title>
+        <style>
+            body {
+                height: 5000px;
+            }
+
+            .goTop {
+                position: fixed;
+                right: 10px;
+                bottom: 10px;
+                cursor: pointer;
+                display: none;
+            }
+            button.goTopShow{
+                display: block;
+            }
+        </style>
+    </head>
+
+    <body>
+        <button class="goTop">gotop</button>
+        <script>
+            var goTop = document.querySelector('.goTop')
+            goTop.onclick =function(){
+                setScrollY(0)
+            }
+
+            document.body.onscroll = function(){
+               var num =  getScrollY()
+               if(200<num){
+                    goTop.className = 'goTop goTopShow'
+               }else{
+                goTop.className = 'goTop'
+               }
+            }
+
+
+            function getScrollY() {
+                return window.pageYOffset || document.documentElement.scrollTop;
+            }
+            function setScrollY(num) {
+                document.documentElement.scrollTop = document.body.scrollTop = num;
+            }
+
+
+        </script>
+    </body>
+
+</html>

@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Document</title>
+        <style>
+            table,
+            tr,
+            th,
+            td {
+                border: 1px solid gray;
+                border-collapse: collapse;
+            }
+        </style>
+    </head>
+
+    <body>
+        <script id="ss2">
+            var userList = [
+                { name: '黄海丽', sex: '女', age: 26, eg: '大专', biye: "2019-10-31" },
+                { name: '张小波', sex: '男', age: 23, eg: '自考大学', biye: "2019-10-31" },
+                { name: '张奇', sex: '男', age: 22, eg: '高中', biye: "2019-10-31" },
+                { name: '明尊通', sex: '男', age: 23, eg: '大专', biye: "2019-10-31" },
+                { name: '王照翔', sex: '男', age: 27, eg: '本科', biye: "2019-10-31" },
+                { name: '刘玮航', sex: '男', age: 22, eg: '大专', biye: "2019-10-31" },
+                { name: '丁义', sex: '男', age: 22, eg: '', biye: "2019-10-31" },
+                { name: '曾淦', sex: '男', age: 22, eg: '', biye: "2019-10-31" },
+                { name: '廖焕军', sex: '男', age: 25, eg: '', biye: "2019-10-31" },
+                { name: '刘龙光', sex: '男', age: 28, eg: '', biye: "2019-10-31" },
+                { name: '唐英海', sex: '男', age: 24, eg: '', biye: "2019-10-31" },
+                { name: '陈轩纬', sex: '男', age: 24, eg: '', biye: "2019-10-31" },
+                { name: '伍开朗', sex: '男', age: 23, eg: '', biye: "2019-10-31" },
+                { name: '陈曦', sex: '男', age: 25, eg: '', biye: "2019-10-31" },
+                { name: '裴宇欣', sex: '男', age: 23, eg: '', biye: "2019-10-31" },
+                { name: '陈雅强', sex: '男', age: 24, eg: '', biye: "2019-10-31" },
+                { name: '朱中兴', sex: '男', age: 27, eg: '', biye: "2019-10-31" },
+                { name: '何泽鑫', sex: '男', age: 25, eg: '', biye: "2019-10-31" },
+                { name: '黄经桐', sex: '男', age: 27, eg: '', biye: "2019-10-31" },
+                { name: '周清', sex: '男', age: 26, eg: '', biye: "2019-10-31" },
+                { name: '李佼俊', sex: '男', age: 26, eg: '', biye: "2019-10-31" },
+                { name: '谢华辉', sex: '男', age: 23, eg: '', biye: "2019-10-31" },
+                { name: '胡维妮', sex: '女', age: 24, eg: '', biye: "2019-10-31" },
+                { name: '孙露先', sex: '男', age: 23, eg: '', biye: "2019-10-31" },
+                { name: '李亮', sex: '男', age: 25, eg: '', biye: "2019-10-31" },
+                { name: '郑曙洋', sex: '男', age: 24, eg: '', biye: "2019-10-31" },
+                { name: '林家豪', sex: '男', age: 23, eg: '', biye: "2019-10-31" },
+                { name: '余尧', sex: '男', age: 27, eg: '', biye: "2019-10-31" },
+                { name: '刘梓川', sex: '男', age: 22, eg: '', biye: "2019-10-31" },
+                { name: '奉鑫', sex: '男', age: 24, eg: '', biye: "2019-10-31" },
+                { name: '但宇村', sex: '男', age: 24, eg: '', biye: "2019-10-31" },
+                { name: '王森', sex: '男', age: 21, eg: '', biye: "2019-10-31" },
+                { name: '毛朋', sex: '男', age: 24, eg: '', biye: "2019-10-31" },
+                { name: '冯南俭', sex: '男', age: 22, eg: '', biye: "2019-10-31" },
+                { name: '宋一凡', sex: '男', age: 26, eg: '', biye: "2019-10-31" },
+                { name: '谭燕燕', sex: '女', age: 26, eg: '', biye: "2019-10-31" },
+                { name: '江松满', sex: '男', age: 22, eg: '', biye: "2019-10-31" },
+                { name: '陈棉x', sex: '男', age: 23, eg: '', biye: "2019-10-31" },
+                { name: '肖金辛', sex: '男', age: 23, eg: '', biye: "2019-10-31" },
+                { name: '扬杰腾', sex: '男', age: 29, eg: '', biye: "2019-10-31" },
+                { name: '汤金超', sex: '男', age: 25, eg: '', biye: "2019-10-31" },
+                { name: '巩靖宇', sex: '男', age: 20, eg: '', biye: "2019-10-31" },
+                { name: '李欣原', sex: '男', age: 22, eg: '', biye: "2019-10-31" },
+                { name: '扬永帅', sex: '男', age: 26, eg: '', biye: "2019-10-31" },
+                { name: '李培鹏', sex: '男', age: 25, eg: '', biye: "2019-10-31" },
+                { name: '石娟', sex: '男', age: 20, eg: '', biye: "2019-10-31" },
+                { name: '刘硕', sex: '男', age: 27, eg: '', biye: "2019-10-31" },
+                { name: '钱骏', sex: '男', age: 23, eg: '', biye: "2019-10-31" },
+                { name: '蒋贤', sex: '男', age: 25, eg: '', biye: "2019-10-31" },
+                { name: '李扬', sex: '男', age: 23, eg: '', biye: "2019-10-31" },
+                { name: '黄中憬', sex: '男', age: 24, eg: '', biye: "2019-10-31" },
+                { name: '胡锦航', sex: '男', age: 22, eg: '', biye: "2019-10-31" },
+                { name: '李思思', sex: '女', age: 21, eg: '', biye: "2019-10-31" },
+                { name: '雷杰', sex: '男', age: 28, eg: '', biye: "2019-10-31" },
+                { name: '孙泽华', sex: '男', age: 27, eg: '', biye: "2019-10-31" },
+                { name: '谢贤堂', sex: '男', age: 23, eg: '', biye: "2019-10-31" },
+                { name: '王梦阳', sex: '男', age: 22, eg: '', biye: "2019-10-31" },
+                { name: '郭豪', sex: '男', age: 23, eg: '', biye: "2019-10-31" },
+
+            ]
+            var table = document.createElement('table')
+            table.innerHTML = `
+            <thead>
+                <tr>
+                    <th></th>
+                    <th>姓名</th>
+                    <th>性别</th>
+                    <th>年龄</th>
+                    <th>学历</th>
+                    <th>毕业时间</th>
+                </tr>
+            </thead>`
+            tbody =  document.createElement('tbody')
+            table.appendChild(tbody)
+            for (var i = 0; i < userList.length; i++) {
+                var user = userList[i]
+                tr =  document.createElement('tr')
+                tr.innerHTML = `
+                    <td>${i+1}</td>
+                    <td>${user.name}</td>
+                    <td>${user.sex}</td>
+                    <td>${user.age}</td>
+                    <td>${user.eg}</td>
+                    <td>${user.biye}</td>`
+                tbody.appendChild(tr)
+            }
+            
+            // document.body.appendChild(table)
+            document.body.insertBefore(table,document.querySelector('script#ss2'))
+
+
+
+        </script>
+    </body>
+
+</html>

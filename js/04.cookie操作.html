@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <button class="btn">删除COOKIE</button>
+    <script>   
+        var btn = document.querySelector('.btn')
+
+        // console.log(document.cookie ) 
+        // document.cookie = 'name="小明"'
+        var date = new Date( new Date().getTime() + (1000 * 60 * 30))
+        // console.log(date.toUTCString())
+        // console.log(toUTCString())
+        // 添加有效时间的cookie
+        document.cookie = 'age=19;expires='+ date.toUTCString()
+        // 修改已经存在的cookie
+        document.cookie = 'age=20;expires='+ date.toUTCString()
+        // console.log(document.cookie ) 
+
+        btn.onclick = function(){
+            // 删除cookie
+            var date = new Date( new Date().getTime() - 1)
+            document.cookie = 'age=20;expires='+ date.toUTCString()
+        }
+        
+
+        
+    </script>
+</body>
+</html>

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Document</title>
+    </head>
+
+    <body>
+        <button class="btn">按钮</button>
+        <script>
+            var btn = document.querySelector('.btn')
+            btn.onclick = function(){
+                console.log('....')
+            }
+            // 会覆盖前面的赋值
+            btn.onclick = btnClick
+
+            function btnClick() {
+                console.log('aaaaaaa')
+            }
+
+        // console.log(typeof btn.onclick)
+        </script>
+    </body>
+
+</html>

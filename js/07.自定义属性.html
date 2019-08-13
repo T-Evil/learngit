@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Document</title>
+    </head>
+
+    <body>
+        <ul class='list'>
+            <li data-color='red' data-item='{"hello":"你好","age":19} ' class="red"> red </li>
+            <li data-color='blue'> blue </li>
+            <li data-color='yelow'> yelow </li>
+        </ul>
+        <script>
+            console.log(document.querySelector('.red').dataset.color)
+            let list = document.querySelector('.list')
+            list.onclick = (ev)=>{
+                if('LI' == ev.target.nodeName){
+                    console.log(ev.target.dataset['color'])
+                    console.log()
+                    if(ev.target.dataset.item){
+                        console.log(JSON.parse(ev.target.dataset.item))
+                    }
+                }
+            }
+        </script>
+
+    </body>
+
+</html>

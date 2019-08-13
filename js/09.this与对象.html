@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Document</title>
+    </head>
+
+    <body>
+        <script>
+            var man = {
+                name: '王刚',
+                age: 20,
+                sex: '男',
+                job: function () {
+                    // this表示当前对象
+                    console.log(this.name + '的工作是 学生，今年' + this.age + '岁')
+                }
+            }
+            man.job()
+
+            var person = new Object()
+            person.name = '小明'
+            person.age = 19
+            person.work = function () {
+                console.log(this)
+                console.log(this.name)
+                console.log(this.age)
+            }
+
+            person.work()
+
+
+
+        </script>
+    </body>
+
+</html>

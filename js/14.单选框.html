@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Document</title>
+        <style>
+            label,
+            input[type='radio'] {
+                cursor: pointer;
+            }
+        </style>
+    </head>
+
+    <body>
+        <label for="red">red</label>
+        <input type="radio" name="color" value="red" id="red">
+        <label for="blue">blue</label>
+        <input type="radio" name="color" value="blue" checked id="blue">
+        <label for="green">green</label>
+        <input type="radio" name="color" value="green" id="green">
+        <label for="yellow">yellow</label>
+        <input type="radio" name="color" value="yellow" id="yellow">
+
+        <script>
+            var colors = document.querySelectorAll('input[type="radio"]')
+            for (var i = 0; i < colors.length; i++) {
+                // console.log(colors[i].value)
+                // console.log(colors[i].checked)
+                var el = colors[i]
+                el.onchange = function (ev) {
+                    ev = ev || window.event
+                    console.log(ev.target.value)
+                    console.log(ev.target.checked)
+                }
+
+            }
+
+        </script>
+
+
+
+    </body>
+
+</html>

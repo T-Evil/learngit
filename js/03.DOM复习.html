@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset='utf-8'>
+        <title>DOM</title>
+        <style>
+            #box1{
+                background: red;
+            }
+            
+        
+        </style>
+    </head>
+    <body>
+        <div id="box1" class="box mybox">box1</div>
+        <div id="box2" class="mybox" name='bb'>box1</div>
+        <div id="box3" class="mybox">box1</div>
+        <div id="box3" class="" name='bb'>box1</div>
+
+        <ul class="list">
+            <li>1</li>
+            <li>2</li>
+            <li>3</li>
+            <li>4</li>
+            <li>5</li>
+        </ul>
+        <script>
+            var  box1 =  document.getElementById('box1')
+            // 返回数组
+            var divs =  document.getElementsByClassName('mybox')
+            var bbs =  document.getElementsByName('bb')
+            var ds = document.getElementsByTagName('div')
+
+            // h5
+            var conent = document.querySelector('.box.mybox')
+            var li = document.querySelector('.list>li')
+            var lis = document.querySelectorAll('.list>li')
+
+
+            console.log(li)
+            console.log(lis)
+            
+        
+        </script>
+    </body>
+</html>

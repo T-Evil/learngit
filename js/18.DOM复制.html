@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Document</title>
+    </head>
+
+    <body>
+        <ul class="color2">
+            <li>红</li>
+            <li>蓝</li>
+            <li>绿</li>
+            <li>黄</li>
+        </ul>
+
+
+
+        <script src="./lib/jquery-3.4.1.js"></script>
+        <script>
+            $('body>.color2').click(ev=>{
+                if('li' == ev.target.nodeName.toLowerCase()){
+                    console.log( $(ev.target).text() )
+                }
+            })
+
+            let newColor = $('.color2').clone(true)
+            
+
+            $('.color2').after(newColor)
+            
+        </script>
+    </body>
+
+</html>

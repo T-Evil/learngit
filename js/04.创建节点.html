@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Document</title>
+        <style>
+            .redC {
+                background: red;
+            }
+
+            .blueC {
+                background: blueviolet;
+            }
+
+            .greenC {
+                background: greenyellow;
+            }
+
+            .yellowC {
+                background: orange;
+            }
+        </style>
+    </head>
+
+    <body>
+        <ul class="list">
+            <!-- <li class="redC" title="红色">red</li>
+        <li class="blueC" title="蓝色">blue</li>
+        <li class="greenC" title="绿色">green</li>
+        <li class="yellowC" title="黄">yellow</li> -->
+        </ul>
+
+        <script>
+            var listData = [
+                { text: 'red', title: '红色', class: 'redC' },
+                { text: 'blue', title: '蓝色', class: 'blueC' },
+                { text: 'green', title: '绿色', class: 'greenC' },
+                { text: 'yellow', title: '黄色', class: 'yellowC' },
+            ]
+            var list = document.querySelector('.list')
+
+            for (var i = 0; i < listData.length; i++) {
+                var item = listData[i]
+                var li = document.createElement('li')
+                var textNode = document.createTextNode(item.text)
+                var classAttr = document.createAttribute('class')
+                var titleAttr = document.createAttribute('title')
+                classAttr.value = item.class
+                titleAttr.value = item.title
+                // 添加属性
+                li.setAttributeNode(classAttr)
+                li.setAttributeNode(titleAttr)
+                //添加子元素
+                li.appendChild(textNode)
+                list.appendChild(li)
+            }
+
+
+
+        </script>
+    </body>
+
+</html>

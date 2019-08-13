@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <input type="text" class="in1"  >
+    <input type="number" class="in2">
+    <input type="password" class="in2">
+    
+
+    <script>
+        var in1 = document.querySelector('.in1')
+        var numinput = document.querySelector('input[type="number"]')
+        var pwd = document.querySelector('input[type="password"]')
+        // console.log(in1.autofocus)
+        // 自动获取焦点
+        pwd.focus()
+
+
+        pwd.oninput =function(ev){
+            ev = ev || window.event
+            console.log(typeof ev.target.value)
+            console.log( ev.target.value)
+        }
+
+
+        numinput.oninput = function(){
+            console.log( parseInt(this.value ) )
+            // console.log( typeof parseInt(this.value ))
+            
+        }
+
+
+        in1.onchange = function(){
+            console.log(typeof this.value)
+            // this.value += '！'
+        }
+
+        
+
+    
+    </script>
+</body>
+</html>

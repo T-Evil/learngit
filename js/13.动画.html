@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .box{
+            width: 100px;
+            height: 100px;
+            /* opacity: 0; */
+            /* display: none; */
+            background: red;
+            animation-name: mycolor;
+            animation-duration: 2s;
+            animation-delay: .1s;
+            animation-timing-function:ease-in;
+            animation-iteration-count: 2;
+            animation-fill-mode: both;
+            animation-direction: reverse;
+        }
+
+
+        @keyframes myhide{
+            from{
+                opacity: 1;
+            }
+            to{
+                opacity: 0;
+            }
+        }
+        @keyframes mycolor{
+            0%{background: rgb(64, 226, 0);}
+            10%{background: rgb(55, 102, 129);}
+            20%{background: rgba(145, 113, 113, 0.534);}
+            30%{background: rgb(55, 95, 43);}
+            40%{background: rgb(28, 30, 175);}
+            50%{background: rgb(235, 252, 3);}
+            100%{background: #000000;}
+            
+        }
+        .box:hover{
+            animation-play-state:paused;
+        }
+    
+    </style>
+</head>
+<body>
+    <div class="box"></div>
+    <p>123</p>
+</body>
+</html>

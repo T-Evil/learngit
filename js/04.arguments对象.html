@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Document</title>
+    </head>
+
+    <body>
+        <script>
+
+        //    console.log( myFun(1, 2))
+           console.log( myFun(6, 2,55,'hello',null))
+
+            function myFun() {
+                // 接收实参列表中传入的所有参数
+                // console.log( arguments )
+                // console.log('参数1：' +  arguments[0] )
+                // console.log('参数2：' +  arguments[1] )
+                for(var i=0; i<arguments.length; i++){
+                    console.log(arguments[i])
+                }
+
+                return arguments[0] + arguments[1]
+            }
+
+
+        </script>
+    </body>
+
+</html>

@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        *{ padding: 0;margin: 0; }
+        ul{ list-style: none; }
+        a{ text-decoration: none; }
+        .clear:after{content: '';display: block;clear: both;}
+        .clear{zoom:1; }
+        .topNavbar{
+            width: 100%;
+            height: 34px;
+            background: green;
+            line-height: 34px;
+            overflow: hidden;
+        }
+        .warp{ 
+            /* background: green; */
+            width: 80%; 
+            min-width: 900px;
+            margin: 0 auto;
+        }
+        .topNavbar li{ 
+            float: left;
+         }
+         .topNavbar li>a{
+             color: #fff;
+             font-size: 14px;
+             padding: 0 10px;
+         }
+         .tNLeft{float: left; }
+         .tNRight{float: right; }
+         .topNavbar li>a.navberActive{
+             color: yellow;
+         }
+      
+    </style>
+</head>
+<body>
+    <nav class="topNavbar clear">
+        <div class="warp clear">
+            <ul class="clear tNLeft">
+                <li><a href="javascript: ;" >首页</a></li>
+                <li><a href="javascript:;">HTML</a></li>
+                <li><a href="javascript:;">CSS</a></li>
+                <li><a href="javascript:;">JAVASCRIPT</a></li>
+                <li><a href="javascript:;">JQUERY</a></li>
+                <li><a href="javascript:;">BOOTSTRAP</a></li>
+                <li><a href="javascript:;">SQL</a></li>
+                <li><a href="javascript:;">MYSQL</a></li>
+            </ul>
+            <div class="tNRight">
+                <select class="t-Color">
+                    <option value="red">red</option>
+                    <option value="blue">blue</option>
+                    <option value="green">green</option>
+                    <option value="orange">orange</option>
+                </select>
+            </div>
+        </div>
+
+    </nav>
+    <script>
+        let list = document.querySelector('.tNLeft')
+        let alist = document.querySelectorAll('.tNLeft a')
+        let color = document.querySelector('.t-Color')
+        let topNavbar = document.querySelector('.topNavbar')
+        let warp = document.querySelector('.warp')
+        
+        if(null != cs){
+                if(cs.hasOwnProperty('cookl')){
+                    topNavbar.style.background  = cs['cookl']
+                    console.log(cs)
+                }
+            }
+        list.onmouseover = (ev)=>{
+            let This = ev.target
+            if('A'== This.nodeName){
+                for(let i=0; i<alist.length; i++){
+                    alist[i].classList.remove('navberActive')
+                }
+                This.classList.add('navberActive')
+            }
+        }
+        color.onchange = function(){
+            // if(this.value){
+                topNavbar.style.background = this.value
+                // warp.style.background = this.value
+               
+            // }
+            // console.log(this.value)
+        }
+        
+         
+    </script>
+
+
+</body>
+</html>

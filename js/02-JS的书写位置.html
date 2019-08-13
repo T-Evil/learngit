@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <!-- CSS文件的代码要生效需要引入 -->
+    <link rel="stylesheet" href="./a.css">
+    <style>
+        /* 选择器{
+            书写:值
+        } */
+    </style>
+</head>
+<body>
+
+    <div>    HTML在 body里面写标签</div>
+    <img src="./a.jpg" alt="">
+    <h1></h1>
+    <!-- JS代码也是要放到标签里面的 -->
+    <!-- 脚本 script  javascript也是一种脚本 使用脚本的标签来写JS代码 -->
+    <script>
+        // 书写JS的代码
+        // alert 在网页弹出一个框框 显示你要弹出的内容 必须写一个() 小括号里面写要弹出的内容
+        // 数字是不用带引号 但是字符 要带引号 引号可以是单引号 或者 双引号 但是要成双成对
+        // alert(1)
+        alert("abc")
+    </script>
+
+    <!-- JS代码如果需要被浏览器执行在页面中 也要在当前的页面中去引入JS文件 -->
+    <!-- 使用JS引入文件代码的标签 script 通过src指定引入JS文件的路径 -->
+    <script src="./a.js">
+    </script>
+
+    <!-- 注意事项 如果script指定了src里面不能再放代码了 -->
+    <!-- <script src="./a.js">
+       alert('今天也是充满希望的一天！')
+    </script> -->
+    <script>
+         // 不写src 就执行标签里面写的JS代码
+         // 这里面不能再写JS代码
+         alert('今天也是充满希望的一天！')
+    </script>
+
+    <!-- 总结：
+    JS代码书写方式有2种
+        1. 在script标签里面写 
+        2. 在一个后缀为.js的文件中写 但是要通过script标签引入进来  src 指定文件路径
+        3. 注意script标签写了src属性不能在里面再写代码了 需要还有代码单独写 再写script标签不写src -->
+</body>
+</html>

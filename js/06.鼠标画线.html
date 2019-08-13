@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Document</title>
+        <style>
+            #canvas {
+                background: rgba(209, 209, 209, 0.267);
+            }
+        </style>
+    </head>
+
+    <body>
+        <canvas id="canvas" width="500" height="500"></canvas>
+        <input type="color" class="selectColor">
+
+        <script>
+            let sc = document.querySelector('.selectColor')
+            let canvas = document.getElementById('canvas');
+            let paint = canvas.getContext('2d');
+
+            sc.oninput =function(){
+                paint.strokeStyle = this.value;
+            }
+
+            
+            canvas.onmousedown = function (ev) {
+                paint.beginPath();
+                paint.moveTo(ev.clientX - canvas.offsetLeft, ev.clientY - canvas.offsetTop);
+
+                document.onmousemove = function (ev) {
+                    
+                    paint.lineTo(ev.clientX - canvas.offsetLeft, ev.clientY - canvas.offsetTop);
+
+                    paint.stroke();
+                }
+                document.onmouseup = function () {
+                    document.onmousemove = null;
+                    document.onmouseup = null;
+                }
+            }
+
+        </script>
+    </body>
+
+</html>

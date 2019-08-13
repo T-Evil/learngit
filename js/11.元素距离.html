@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .box1{
+            /* margin:20px; */
+            border:10px solid gray;
+            background: blue;
+            
+        }
+        .box2{
+            margin:20px;
+            padding:100px;
+            border:10px solid yellow;
+            background: green;
+            position: relative;
+        }
+
+        .box3{
+            /* margin:20px; */
+            border:10px solid red;
+            background: palevioletred
+        }
+    </style>
+</head>
+<body>
+    <div class="box1">1
+        <div class="box2">2
+            <div class="box3">3</div>
+        </div>
+    </div>
+
+    <script>
+        var box3 = document.querySelector('.box3')
+        console.log(box3.offsetLeft)
+    
+    </script>
+</body>
+</html>

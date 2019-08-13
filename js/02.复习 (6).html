@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+    /* .col{
+        height: 50px; border: 1px solid gray;
+    }   */
+    .col-1{ width: 10%; }
+    .col-2{ width: 20%;}
+    .col-3{ width: 30%; ;}
+    .col-4{ width: 40%; ;}
+    
+    [class*='col-']{
+        height: 50px; border: 1px solid gray;
+    }
+    [contenteditable]{
+        width: 100px;height: 100px;
+        border: 1px solid gold;
+        box-shadow: 0 0 8px 10px gray;
+        text-shadow: 2px 2px 1px rgb(184, 184, 184);
+    }
+    </style>
+</head>
+<body>
+    <div class="col-1 "></div>
+    <div class="col-2 "></div>
+    <div class="col-3 "></div>
+    <div class="col-4 "></div>
+
+    <div contenteditable="true">asdfdfdf</div>
+
+</body>
+</html>

@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Document</title>
+        <style>
+            html,
+            body {
+                height: 100%;
+            }
+
+            ul {
+                list-style: none;
+            }
+
+            body {
+                background: #fafafa;
+            }
+
+            .login {
+                width: 340px;
+                height: 390px;
+                background: #fff;
+                border-radius: 5px;
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                margin-left: -170px;
+                margin-top: -195px;
+            }
+
+            .navbar>li {
+                display: inline-block;
+                padding: 0 10px;
+
+            }
+
+            .navbar {
+                padding: 0 78px;
+                color: #999;
+                font-size: 14px;
+            }
+
+            .userinput {
+                text-align: center;
+            }
+
+            .userinput>[type='password'],
+            .userinput>[type='text'],
+            .userinput>.checkboxGroup,
+            .userinput>[type='button'] {
+                box-sizing: border-box;
+                width: 260px;
+                height: 48px;
+                margin-bottom: 30px;
+                padding-left: 10px;
+
+
+            }
+
+            .userinput>.checkboxGroup {
+                padding: 0;
+                display: inline-block;
+                text-align: left;
+                user-select: none;
+            }
+
+            #jizhu,
+            [for='jizhu'] {
+                cursor: pointer;
+                font-size: 12px;
+                color: #999;
+                vertical-align: middle;
+            }
+
+
+            [type='button'] {
+                border: none;
+                display: inline-block;
+                width: 100%;
+                box-sizing: border-box;
+                background: #2984EF;
+                font-weight: 500;
+                font-size: 16px;
+                color: #ffffff;
+                text-align: center;
+                padding: 8px;
+                border-radius: 2px;
+                cursor: pointer;
+            }
+
+            .username,
+            .pwd {
+                border: 1px solid rgba(128, 128, 128, 0.377);
+                outline: none;
+            }
+
+            .inputErr {
+                border-color: red;
+                box-shadow: 0 0 8px rgba(255, 0, 0, 0.349);
+            }
+        </style>
+    </head>
+
+    <body>
+        <div class="login">
+            <ul class="navbar">
+                <li>帐号密码</li>
+                <li>手机验证码</li>
+            </ul>
+            <div class="userinput">
+                <input type="text" class="username" placeholder="请输入邮箱地址" />
+                <input type="password" class="pwd" placeholder='请输入密码' >
+                <div class="checkboxGroup">
+                    <input type="checkbox" name="" id="jizhu" checked>
+                    <label for="jizhu">记住用户名及密码</label>
+                </div>
+                <input type="button" class="loginBtn" value="登录">
+
+            </div>
+        </div>
+        <script src="./lib/base64.js"></script>
+        <script>
+            let username = document.querySelector('.username')
+            let pwd = document.querySelector('.pwd')
+            let jizhu = document.querySelector('#jizhu')
+            let loginBtn = document.querySelector('.loginBtn')
+            let re = /^\w+@[A-z0-9]{2,9}\.[a-z]{2,6}$/
+            let re2 = /^\w{6,9}$/
+            var cs = getCookieAll()
+            if(null != cs){
+                if(cs.hasOwnProperty('uname')){
+                    username.value = Base64.decode(cs["uname"])
+                }
+                if(cs.hasOwnProperty('pwd')){
+                    pwd.value = Base64.decode( cs["pwd"])
+                }
+            }
+
+            loginBtn.onclick = function () {
+                if (!re.test(username.value)) {
+                    username.className = 'username inputErr '
+                    return
+                }
+
+                if (!re2.test(pwd.value)) {
+                    pwd.className = 'pwd inputErr '
+                    return
+                }
+                username.className = 'username '
+                pwd.className = 'pwd '
+                // 保存到COOKIE
+                if(jizhu.checked){
+                    setCookie('uname',Base64.encode(username.value))
+                    setCookie('pwd',Base64.encode(pwd.value))
+
+                }else{ //删除数据
+                    clearCookieByName('uname')
+                    clearCookieByName('pwd')
+                }
+                
+            }
+
+
+            /**
+            * 设置cookie
+            * @param {String} name  cookie名称
+            * @param {String} value cookie值
+            * @param {Number} time 过期时间 分钟
+            */
+            function setCookie(name, value, minute) {
+                let va = escape(value)
+                let data = new Date()
+                if (minute) {
+                    data.setTime(data.getTime() + 1000 * 60 * minute)
+                    document.cookie = `${name}=${va};expires=${data.toUTCString()}`
+                } else {
+                    document.cookie = `${name}=${va}` //当前会话关闭就超时
+                }
+            }
+
+            /**
+             * 删除指定cookie
+             * @param {String} name 要删除的cookie名称
+             */
+            function clearCookieByName(name) {
+                setCookie(name, '', -1)
+            }
+
+
+            /**
+             * 获取所有cookie
+             * return 包含当前cookie值的对象 
+             */
+            function getCookieAll() {
+                let coo = document.cookie
+                if (coo == '') {
+                    return null
+                }
+                //清除空格
+                coo = coo.replace(/\s+/g, '')
+                let cArr = coo.split(';')
+                let cookies = {}
+                cArr.forEach((coo) => {
+                    let c = coo.split('=')
+                    cookies[c[0]] = unescape(c[1])
+                })
+                return cookies
+            }
+
+            /**
+             * 获取指定名称的cookie
+             * 参数name: cookie名称
+             * return :如果有返回cookie值，否则返回为null
+             */
+            function getCookieByName(name) {
+                let cs = getCookieAll()
+
+                if (cs.hasOwnProperty(name)) {
+                    return cs[name]
+                } else {
+                    return null
+                }
+            }
+
+        </script>
+    </body>
+
+</html>

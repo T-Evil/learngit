@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        label,input[type='radio'] {
+            cursor: pointer;
+        }
+        label{
+            display: inline-block;
+            width: 30px;height: 15px;
+        }
+        [for='red']{ background: red;}
+        [for='blue']{ background: blue;}
+        [for='green']{ background: green;}
+        [for='yellow']{ background: yellow;}
+
+        ul{
+            list-style: none;
+        }
+        ul>li{
+            display: inline-block;
+            width: 50px;height: 50px;
+            line-height:50px; 
+            text-align: center;
+            color: #fff;
+            border-radius: 20px;
+            display: none;
+        }
+
+        ul>li.show{
+            display: inline-block;
+        }
+
+
+        li:nth-child(1){ background: red; }
+        li:nth-child(2){ background: blue; }
+        li:nth-child(3){ background: green; }
+        li:nth-child(4){ background: yellow; }
+    </style>
+
+</head>
+<body>
+    <div>
+        <input type="radio" name="colors" id="red" value="red" checked>
+        <label for="red"> </label>
+        <input type="radio" name="colors" id="blue" value="blue">
+        <label for="blue"> </label>
+        <input type="radio" name="colors" id="green" value="green">
+        <label for="green"> </label>
+        <input type="radio" name="colors" id="yellow" value="yellow">
+        <label for="yellow"> </label>
+    </div>
+    <ul class="list">
+        <li class="show">red</li>
+        <li>blue</li>
+        <li>green</li>
+        <li>yellow</li>
+    </ul>
+    <script>
+       var colors =  document.getElementsByName('colors')
+       var lis =  document.querySelectorAll('.list>li')
+
+       for(var i=0; i<colors.length; i++){
+            colors[i].onchange = function(){
+                // this.value
+                for(var i=0; i<lis.length;i++){
+                    var el = lis[i]
+                    if(this.value == el.innerText){
+                        el.className = 'show'
+                    }else{
+                        el.className = ''
+                    }
+                }
+            }
+       }
+        
+    </script>
+</body>
+</html>

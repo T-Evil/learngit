@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Document</title>
+    </head>
+
+    <body>
+        <script>
+            // 工厂方式
+            function createMan(name, age) {
+                var obj = new Object()
+                obj.name = name
+                obj.age = age
+                obj.run = function () {
+                    console.log('....')
+                }
+                return obj
+            }
+            var m1 = createMan('1sdd', 123)
+            var m2 = createMan('1sdd', 123)
+            var m3 = createMan('1sdd', 123)
+            var m4 = createMan('1sdd', 123)
+            var m5 = createMan('1sdd', 123)
+
+            // 构造函数方式
+            function Man(name,age){
+                this.name = name
+                this.age = age
+                this.run = function(){
+
+                }
+            }
+
+            var m1 = new Man('23',19)
+            var m2 = new Man('23',19)
+            var m3 = new Man('23',19)
+            var m4 = new Man('23',19)
+
+
+        </script>
+    </body>
+
+</html>

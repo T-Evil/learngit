@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Document</title>
+        <style>
+            * {
+                margin: 0;
+                padding: 0;
+            }
+
+            #div1,
+            #div2,
+            #div3 {
+                padding: 50px;
+            }
+
+            #div1 {
+                background: red;
+            }
+
+            #div2 {
+                background: green;
+            }
+
+            #div3 {
+                background: blue;
+            }
+
+            body {
+                padding: 20px;
+            }
+
+            html {
+                padding: 10px;
+            }
+        </style>
+    </head>
+
+    <body>
+        <div id="div1" style="position: absolute">
+            <div id="div2">
+                <div id="div3" ></div>
+            </div>
+        </div>
+
+        <script>
+            var div3 = document.getElementById('div3');
+            console.log(div3.offsetLeft);
+            console.log(div3.offsetTop);
+        </script>
+    </body>
+
+</html>

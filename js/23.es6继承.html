@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Document</title>
+    </head>
+
+    <body>
+        <script>
+            // 父类
+            class Human {
+                constructor(name, age, sex) {
+                    this.name = name
+                    this.age = age
+                    this.sex = sex
+                    console.log('human')
+                }
+            }
+            // 子类
+            class Man extends Human{
+                constructor(name, age, job) {
+                    // super表示父类构造方法
+                    super(name, age,'男')
+                   
+                    this.job = job
+                } 
+            }
+
+            class Woman extends Human{
+                constructor(name, age,shopping) {
+                    super(name,age,'女')
+                   
+                    this.shopping = shopping
+                } 
+            }
+
+            let m1 =  new Man('小明',19,"学生")
+            let w1 =  new Woman('小红',19,"学生")
+            console.log( m1 instanceof Human )
+            console.log( w1  instanceof Human )
+
+
+
+        </script>
+    </body>
+
+</html>

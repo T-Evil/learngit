@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Document</title>
+    </head>
+
+    <body>
+        <script>
+            var num = 19
+            var arr = [1, 2, 3, 6, 789]
+            //  188,2,3,6,789
+            console.log(arr)
+            var  newArr = [arr.length+1]
+            newArr[0] = num
+            for(var i=0;i<arr.length;i++){
+                newArr[i+1]= arr[i]
+            }
+            arr =  newArr
+            console.log(newArr)
+            console.log(arr)
+        </script>
+    </body>
+
+</html>

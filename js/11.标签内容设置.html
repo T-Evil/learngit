@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .list>li{
+            color: #fff;
+            font-size: 18px ;
+            font-weight: 900;
+        }
+        .red{
+            background: red;
+        }
+        .blue{
+            background: blue;
+        }
+        .yellow{
+            background: yellow;
+        }
+        .green{
+            background: green;
+        }
+    </style>
+</head>
+<body>
+    <ul class='list'>
+        <!-- red -->
+        <li></li>  
+        <!-- blue -->
+        <li></li>
+        <!-- yellow -->
+        <li></li>
+        <!-- green -->
+        <li></li>
+    </ul>
+    <script>
+        var list = document.querySelector('.list')
+        // 获取第一个元素
+        var item =  list.firstElementChild
+        item.setAttribute('class','red')
+        // item.innerText = 'red'
+        item.innerHTML = 'red'
+        // 获取第二个元素
+        item = item.nextElementSibling
+        item.className = 'blue'
+        item.innerText = 'blue'
+
+        // 获取第三个元素
+        item = item.nextElementSibling
+        item.className = 'yellow'
+        item.innerText = 'yellow'
+
+        // 获取第四个元素
+        item = item.nextElementSibling
+        item.className = 'green'
+        item.innerText = 'green'
+
+    
+    
+    </script>
+</body>
+</html>

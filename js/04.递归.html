@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Document</title>
+    </head>
+
+    <body>
+        <script>
+            // 阶乘
+            // 3 1*2*3   10
+            // 10
+
+            // function jiecheng(num) {
+            //     let value = 1;
+            //     for (let i = 1; i <= num; i++) {
+            //         value *= i
+            //     }
+            //     return value
+            // }
+
+            let value  =  jiecheng(6000* 1000)
+            console.log(value)
+            function jiecheng(num) {
+                if (1 == num) 
+                    return 1;
+                return num * jiecheng(num - 1)
+            }
+
+
+
+        </script>
+    </body>
+
+</html>

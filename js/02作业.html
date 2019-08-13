@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .list{
+            list-style: none;
+        }
+        .list>li{
+            width: 200px;height: 20px;
+            background: rgb(204, 202, 202);
+            margin-bottom: 20px;
+            color: #fff;
+        }
+        li.active{
+            background: green;
+        }
+        button{
+            cursor: pointer;
+        }
+    
+    </style>
+</head>
+<body>
+    <ul class="list">
+        <li>1</li>
+        <li class="">2</li>
+        <li class="active">3</li>
+        <li>4</li>
+    </ul>
+    <div>
+        <button id="up">向上</button>
+        <button class="down">向下</button>
+    </div>
+
+
+    <script>
+        var list =  document.querySelector('.list')
+        var upBtn = document.getElementById('up')
+        // var downBtnArr = document.getElementsByClassName('down')
+        // var  downBtn = downBtnArr[0]
+        var downBtn = document.getElementsByClassName('down')[0]
+
+        // 向上
+        upBtn.onclick =function(){
+            move(list, 'up')
+            // var item =  getActive(list)
+            // if(null != item){
+            //     // 上一个兄弟节点
+            //     var prevItem = item.previousElementSibling
+            //     if(null !=  prevItem){
+            //         prevItem.className='active'
+            //         item.className=''
+            //     }
+            // }
+        }
+        // 向下
+        downBtn.onclick =function(){
+            move(list, 'down')
+            // var item =  getActive(list)
+            // if(null != item){
+            //     // 上一个兄弟节点
+            //     var nextItem = item.nextElementSibling
+            //     if(null !=  nextItem){
+            //         nextItem.className='active'
+            //         item.className=''
+            //     }
+            // }
+        }
+        // up down
+        function move(list, flag){
+            var item =  getActive(list)
+            if(null != item){
+                // 上一个兄弟节点
+
+                var nextItem = flag == "up" ? item.previousElementSibling :item.nextElementSibling
+                if(null !=  nextItem){
+                    nextItem.className='active'
+                    item.className=''
+                }
+            } 
+        }
+
+        // 获取当前的持有active类的元素
+        function getActive(list){
+            var items = list.children
+            for(var i=0; i<items.length; i++){
+                if( -1 !=  items[i].className.indexOf('active')){
+                    return items[i]
+                }
+            }
+            return null
+        }
+
+    </script>
+</body>
+</html>

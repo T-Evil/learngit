@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="zn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let url = 'http://192.168.5.4/ajaxDemo2.php'
+        
+        ajax('POST',url, 'name=xiaoming&age=19', (err, res)=>{
+            if(err){
+                console.log(err)
+                return
+            }
+            console.log(res)
+        })
+
+
+
+
+        /**
+        method: 请求方式
+        url: 请求地址
+        data： post时请求参数
+        callback : 响应结果的事件回调 两个参数
+            第一个参数：错误没有错误值为null
+            第二个参数：响应内容，
+        */
+        function ajax(method, url, data, callback){
+            // 1.获取请求对象
+            let xhr = new XMLHttpRequest()
+            // 2.获取请求参数
+            xhr.open(method,url, true)
+            // 设置请求头
+            xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+            // 3. 发送请求
+            xhr.send(data)
+            // 4. 等待服务器响应
+            xhr.onreadystatechange = function(){
+                // 请求成功
+                if(4 == xhr.readyState && 200 == xhr.status){
+                    // console.log(xhr.responseText)
+                    callback(null, xhr.responseText )
+                }else if(4 == xhr.readyState && 200 != xhr.status ){ //请求失败
+                    callback({
+                        'httpstatus':xhr.status
+                    }, null )
+                }
+
+            }
+        }
+    
+    
+    
+    </script>
+</body>
+</html>

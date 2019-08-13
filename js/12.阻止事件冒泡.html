@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Document</title>
+        <style>
+            .box1,
+            .box2,
+            .box3 {
+                display: inline-block;
+            }
+
+            .box3 {
+                width: 100px;
+                height: 100px;
+                background: red;
+            }
+
+            .box2 {
+                padding: 50px;
+                background: blue;
+            }
+
+            .box1 {
+                padding: 50px;
+                background: green;
+            }
+        </style>
+    </head>
+
+    <body>
+        <div class="box1">
+            box1
+            <div class="box2">
+                box2
+                <div class="box3">box3</div>
+            </div>
+        </div>
+        <script>
+            var box1 = document.querySelector('.box1')
+            var box2 = document.querySelector('.box2')
+            var box3 = document.querySelector('.box3')
+            document.body.onclick = function () {
+                console.log('body')
+            }
+
+
+            bindEvent(box1, 'click', function (ev) {
+                console.log('box1')
+                ev.cancelBubble = true;
+                ev.stopPropagation();
+            })
+            bindEvent(box2, 'click', function (ev) {
+                console.log('box2')
+                ev.cancelBubble = true;
+                ev.stopPropagation();
+            })
+            bindEvent(box3, 'click', function (ev) {
+                console.log('box3')
+                ev.cancelBubble = true;
+                ev.stopPropagation();
+            })
+            function bindEvent(obj, eventName, callback) {
+                if (obj.addEventListener) {
+                    // false冒泡 ，true捕获
+                    obj.addEventListener(eventName, callback, false);
+                } else {
+                    obj.attachEvent("on" + eventName, callback);
+                }
+            }
+
+
+        </script>
+
+
+    </body>
+
+</html>

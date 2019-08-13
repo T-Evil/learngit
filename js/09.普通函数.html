@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 定义函数，这段并不会自已执行。
+        function myFun(){
+            console.log('myFun...')
+        }
+        // 调用函数，执行函数体的代码
+        // myFun()
+        // myFun() 
+        // 函数名称代表函数的本身
+        console.log( myFun )
+        var fun 
+        // 将函数名作为值赋值给 fun
+        // fun被赋值就变成了函数
+        fun  = myFun
+        console.log(fun)
+        // 调用函数
+        // fun()
+        fun = null
+        // fun() // 语法错误，调用失败
+    
+    
+    </script>
+</body>
+</html>

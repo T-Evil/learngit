@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .box{
+            width: 100px;
+            height: 100px;
+            border: 1px solid gray;
+        }
+        .active{
+            background: green;
+        }
+    </style>
+</head>
+<body>
+    <div class="box"> </div>
+    <div class="box"> </div>
+    <div class="box"> </div>
+    <div class="box"> </div>
+    <div class="box"> </div>
+    <div class="bb"> </div>
+
+    <div class="b2">
+        <p>
+            <span></span>
+        </p>
+        <span></span>
+        <div>
+            <span></span>
+        </div>
+    </div>
+    <ul class="list">
+        <li>1</li>
+        <li class="item2">2</li>
+        <li>3</li>
+        <li>4</li>
+    </ul>
+
+
+
+    <script src="./lib/jquery-3.4.1.js"></script>
+    <script>
+       $('.box').click(function(ev){
+            // $(this).toggleClass('active')
+            // $('div').toggleClass('active')
+            // console.log($('*'))
+       })
+    //    console.log( $('.box, .bb') )
+    // console.log($('.b2+span'))
+    // console.log( $('.item2 + span') )
+    console.log( $('.item2 ~ li') )
+
+        
+    </script>
+</body>
+</html>

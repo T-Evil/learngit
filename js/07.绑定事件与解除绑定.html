@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <button class="btn">btn</button>
+    <script src="./lib/jquery-3.4.1.js"></script>
+    <script>
+        function btnClick(ev){
+            console.log("btnclick")
+        }
+        function btnClick1(ev){
+            console.log("btnclick  11111")
+            btn.off('click',btnClick)
+        }
+        let btn =$('.btn')
+        btn.on('click',btnClick)
+        btn.on('click',btnClick1)
+
+        
+        
+        
+    </script>
+</body>
+</html>

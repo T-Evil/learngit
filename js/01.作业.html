@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Document</title>
+    </head>
+
+    <body>
+        <input type="number" class="userinput">
+        <button class="btn">按钮</button>
+        <script>
+            var uinput = document.querySelector('.userinput')
+            var btn = document.querySelector('.btn')
+            btn.onclick = function () {
+                var num = parseFloat(uinput.value)
+                var value = getNum(num)
+                console.log(value)
+            }
+
+            function getNum(num) {
+                var str = `${num}元由人民币`
+                // 求100块有几张
+                var yibai = num / 100
+                yibai = parseInt(yibai) //取整
+                str += yibai ? `100元 ${yibai} 张` : ''
+
+                // 50
+                // 求出50块的被除数(求出100有多少张后省下的钱数)
+                var value = num % 100
+                var wushi = value / 50
+                wushi = parseInt(wushi)
+                str += wushi ? `, 50元 ${wushi} 张` : ''
+
+                // 20
+                value = value % 50
+                var ershi = value / 20
+                ershi = parseInt(ershi)
+                str += ershi ? `, 20元 ${ershi} 张` : ''
+
+                // 10
+                value = value % 20
+                var shi = value / 10
+                shi = parseInt(shi)
+                str += shi ? `, 10元 ${shi} 张` : ''
+
+                // 5
+                value = value % 10
+                var wu = value / 5
+                wu = parseInt(wu)
+                str += wu ? `, 5元 ${wu} 张` : ''
+
+                // 1
+                value = value % 5
+                var yi = value / 1
+                yi = parseInt(yi)
+                str += yi ? `, 1元 ${yi} 张` : ''
+
+                // .5
+                value = value % 1
+                var wumao = value / .5
+                wumao = parseInt(wumao)
+                str += wumao ? `, 5毛 ${wumao} 张` : ''
+
+                // .1 
+                numStr = num + ''
+                var index = numStr.indexOf('.')
+                if (-1 != index) {
+                    var mao = numStr.slice(index+1, index + 2)
+                    var yimao = parseInt(mao)%5
+                    str +=  yimao? `, 1毛 ${yimao} 张` : ''
+                }
+
+                str += '构成'
+
+                return str
+            }
+
+
+        </script>
+    </body>
+
+</html>

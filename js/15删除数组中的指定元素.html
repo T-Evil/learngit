@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+// 删除 3 下标为2
+var arr = [1, 2, 3, 6, 789]
+for(var i=0; i<arr.length; i++){
+    if(2 < i){
+        arr[i-1] = arr[i]
+    }
+}
+// 重新长度赋值
+arr.length -= 1
+console.log(arr)
+    </script>
+</body>
+</html>

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Document</title>
+        <style>
+            .box {
+                width: 100px;
+                height: 100px;
+                display: none;
+            }
+        </style>
+    </head>
+
+    <body>
+        <ul class="list">
+            <li>red</li>
+            <li>blue</li>
+            <li>green</li>
+            <li>yellow</li>
+            <li></li>
+        </ul>
+
+        <div class="box"></div>
+        <ul>
+            <li>John</li>
+            <li>Karl</li>
+            <li>Brandon</li>
+        </ul>
+        <ul>
+            <li>Glen</li>
+            <li>Tane</li>
+            <li>Ralph</li>
+        </ul>
+
+        <script src="./lib/jquery-3.4.1.js"></script>
+        <script>
+        // 匹配具有指定内容的元素
+        // console.log($(".list>li:contains('red')"))
+
+        // console.log($(".list>li:empty"))
+        // console.log($(".list>li:parent"))
+        // console.log($(".list:has('li')"))
+
+        // console.log( $('.box:visible') )
+        // console.log( $('.box:hidden') )
+        // console.log($('ul.list li:first-child') )
+        console.log( $("ul li:nth-child(5)") )
+        </script>
+    </body>
+
+</html>

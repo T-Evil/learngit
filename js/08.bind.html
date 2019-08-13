@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Document</title>
+    </head>
+
+    <body>
+        <script>
+            function myFun(num1, num2) {
+                console.log(this)
+                return num1 + num2
+            }
+
+            // var newFun =  myFun.bind(document.body,1,2)
+            var num = 199
+            var num2 = 200
+            var newFun = myFun.bind(document.body, num, num2)
+            newFun()
+
+
+        </script>
+    </body>
+
+</html>

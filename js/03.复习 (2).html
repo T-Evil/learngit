@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .box1{
+            width: 100px;height: 100px;
+            background: red;
+        }
+        .box2{
+            border: 1px solid gray;
+            background: blue;
+        }
+    </style>
+</head>
+<body>
+    <div class="box1"></div>
+    <div class="box2"></div>
+    
+    <script>
+        var box1 = document.querySelector('.box1')
+        var box2 = document.querySelector('.box2')
+        // 看作剪切操作
+        // box2.appendChild(box1)
+        var newBox = box1.cloneNode(true)
+
+        // 拷贝
+        box2.appendChild(newBox)
+    
+    </script>
+</body>
+</html>

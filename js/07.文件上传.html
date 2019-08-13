@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Document</title>
+    </head>
+
+    <body>
+        <form class="upload" method="POST" enctype="multipart/form-data">
+            <input type="hidden" name="MAX_FILE_SIZE" value="3000000">
+            <input type="file" name="pic">
+            <input type="submit" name="" value="上传">
+        </form>
+
+        <script>
+            let upload = document.querySelector('.upload')
+            upload.onsubmit = function (ev) {
+                ev.preventDefault(); // 兼容标准浏览器
+                window.event.returnValue = false; // 兼容IE6~8
+                let formData = new FormData( upload )
+                formData.append('picDir',"img1")
+
+                let xhr = new XMLHttpRequest()
+                xhr.open('post', 'http://192.168.5.4/0624/upload.php',true)
+                xhr.send(formData)
+                xhr.onreadystatechange = function(){
+                    if(4 == this.readyState && 200 == this.status){
+                        console.log(this.responseText)
+                    }
+                }
+                
+                return false;
+            }
+
+        </script>
+    </body>
+
+</html>

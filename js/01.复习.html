@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <ul>
+        <li>red1</li>
+        <li>red2</li>
+        <li>red3</li>
+        <li>red4</li>
+        <li>red5</li>
+    </ul>
+    <script>
+        var lis =  document.querySelectorAll('ul>li')
+        for(var i=0;i<lis.length; i++){
+            lis[i].onclick = function(){
+
+            }
+        }
+        var ul = document.querySelector('ul')
+        ul.onclick = function(ev){
+            ev = ev || window.event
+            if('LI' == ev.target.nodeName){
+                console.log(ev.target)
+            }
+        }
+
+    </script>
+</body>
+</html>

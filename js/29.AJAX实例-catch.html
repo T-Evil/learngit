@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+    <head>
+        <meta charset="UTF-8">
+        <title>Document</title>
+    </head>
+
+    <body>
+        <script>
+            const getJSON = function (url) {
+                
+                const promise = new Promise(function (resolve, reject) {
+                    const handler = function () {
+                        if (this.readyState !== 4) {
+                            return;
+                        }
+                        if (this.status === 200) {
+                            // 请求成功后修改promise状态为fulfilled，并且将请求结果返回。
+                            resolve(this.response);
+                        } else {
+                            // 请求不成功时修改状态为rejected，并且返回请求出错信息
+                            reject(new Error(this.statusText));
+                        }
+                    };
+                    
+                    const client = new XMLHttpRequest();
+                    client.open("GET", url);
+                    client.onreadystatechange = handler;
+                    client.responseType = "json";
+                    client.setRequestHeader("Accept", "application/json");
+                    client.send();
+
+                });
+
+                return promise;
+            };
+            
+            /*
+                then参数中第二个参数为监听失败状态，可选的，
+                使用.catch()可以代替then中第二个参数，这样代码会更加简洁。
+            */
+            getJSON("./test.json").then( json=> {
+                console.log(json);
+            }).catch(err=>{
+                console.log(err)
+            })
+
+
+
+        </script>
+    </body>
+
+</html>

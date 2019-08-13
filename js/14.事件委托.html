@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        ul>li{
+            background: gray;
+            color: aliceblue;
+            margin-bottom: 10px;
+            cursor: pointer;
+        }
+    
+    </style>
+</head>
+<body>
+    <ul class="list">
+        <li>red</li>
+        <li>blue</li>
+    </ul>
+    <script>
+        var list = document.querySelector(".list")
+        list.onclick =function(ev){
+            if("LI" != ev.target.nodeName ){
+                return
+            }
+
+            console.log(ev.target.innerText)
+        }
+
+
+        // var items = document.querySelectorAll(".list>li")
+        // var list = document.querySelector(".list")
+        // for(var i=0; i<items.length; i++){
+        //     items[i].onclick =function(ev){
+        //         console.log(ev.target.innerText)
+        //     }
+        // }
+
+        var li =  document.createElement('li')
+        li.innerText = "yellow"
+        list.appendChild(li)
+        var li2 = li.cloneNode(true)
+        list.appendChild(li2)
+
+
+    
+    </script>
+</body>
+</html>

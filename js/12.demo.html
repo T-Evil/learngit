@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var man = {
+            name:'小明1',
+
+            run:function(){
+                console.log(this)
+            }
+        }
+
+        var man1 = {
+            name:'小明2',
+
+            run:function(){
+                console.log(this)
+            }
+        }
+        man.run()
+        man1.run()
+        
+
+        var  aaaa = 'hello'
+        console.log( this )
+        if(true){
+            var bbb = 11111
+        }
+
+        for(var i=0;i<10;i++){
+
+        }
+    
+    
+    </script>
+</body>
+</html>

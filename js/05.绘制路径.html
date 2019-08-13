@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Document</title>
+        <style>
+            #canvas {
+                background: rgba(128, 128, 128, 0.267);
+            }
+        </style>
+    </head>
+
+    <body>
+        <canvas id="canvas" width="500" height="500"></canvas>
+
+        <script>
+            let canvas = document.getElementById('canvas');
+            let paint = canvas.getContext('2d');
+            paint.fillStyle = 'red'; //实心
+            paint.strokeStyle = 'blue'; //空心
+            paint.lineWidth = 1
+
+            paint.beginPath();  //开始路径绘制
+            paint.moveTo(100, 100); //路径第一个点：
+            paint.lineTo(100, 300); // 移动到下一个点：
+            paint.lineTo(300, 300); // 移动到下一个点：
+            paint.closePath();  //闭合路径：
+            // paint.stroke(); //以线的方式绘制：
+            paint.fill(); // 以填充的方式绘制：
+
+            // paint.rect(0,0,100,100); 
+            // paint.fill(); 
+            paint.arc(100,100,15,0,180*Math.PI/180,false);//绘制圆形
+            // paint.stroke(); 
+            paint.fill(); 
+            // paint.clearRect(0,0,canvas.width,canvas.height);
+            paint.clearRect(0,0,200,200);
+
+        </script>
+    </body>
+
+</html>

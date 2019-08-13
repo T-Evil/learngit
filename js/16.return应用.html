@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Document</title>
+        <style>
+            .errorActive{
+                border: 1px solid red;
+                box-shadow:  0  0 5px rgba(255, 0, 0, 0.164);
+            }
+        
+        
+        </style>
+    </head>
+
+    <body>
+        <input type="text" class="num1">
+        <span> + </span>
+        <input type="text" class="num2"> 
+        <button class="btn">=</button>
+        <span class="result"></span>
+
+        <script>
+            var num1 = document.querySelector('.num1')
+            var num2 = document.querySelector('.num2')
+            var btn = document.querySelector('.btn')
+            var result = document.querySelector('.result')
+
+            btn.onclick = function(){
+                // 清除错误状态
+                num1.className = 'num1'
+                num2.className = 'num2'
+                result.innerText = ''
+                // 检查用户输入是否为空
+                var num1Value = num1.value
+                var num2Value = num2.value
+                if('' == num1Value ||'' == num2Value ){
+                    return
+                }
+
+                var value =  add( num1Value, num2Value )
+
+                switch ( value ) {
+                    case 'num1Error':
+                        num1.className = 'num1  errorActive'
+                        result.innerText = 'NaN'
+                        break;
+                    case 'num2Error':
+                        num2.className = 'num2  errorActive'
+                        result.innerText = 'NaN'
+                        break;
+                    default: 
+                        result.innerText = value
+                }
+            }
+
+
+            // 加法：‘算术运算’
+            function add(num1, num2) {
+                // true 非数字、false 数字
+                if (isNaN(num1)) {
+                    return 'num1Error'
+                }else if (isNaN(num2)) {
+                    return 'num2Error'
+                }
+
+                num1 = parseFloat( num1 )
+                num2 = parseFloat( num2 )
+
+                //是数字
+                return num1 + num2
+            }
+
+        </script>
+    </body>
+
+</html>

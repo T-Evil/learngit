@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Document</title>
+    </head>
+
+    <body>
+        <ul class="list"></ul>
+        <button class="getList">获取列表</button>
+        <ol class="numList">
+        </ol>
+        <button class="getNumList">获取NUM列表</button>
+
+
+        <script>
+
+            function queryAll(res){
+                let list =  document.querySelector('.list')
+                console.log(res)
+                for(let i=0; i<res.length; i++){
+                    list.innerHTML += `<li>${res[i]}</li>`
+                }
+                let script =  document.querySelector('script[src*="queryAll"]')
+                document.body.removeChild(script)
+            }    
+
+            let getList = document.querySelector('.getList')
+            let getNumList = document.querySelector('.getNumList')
+            getList.onclick =function(){
+                let script =  document.createElement('script')
+                script.src = 'http://192.168.5.4/0624/jsonp.php?jsonpcallback=queryAll';
+                document.body.appendChild(script)
+            }
+
+
+            function queryNumAll(res){
+                let list =  document.querySelector('.numList')
+                for(let i=0; i<res.length; i++){
+                    list.innerHTML += `<li>${res[i]}</li>`
+                }
+                let script =  document.querySelector('script[src*="queryNumAll"]')
+                document.body.removeChild(script)
+            } 
+
+
+            getNumList.onclick =function(){
+                let script =  document.createElement('script')
+                script.src = 'http://192.168.5.4/0624/jsonp.php?jsonpcallback=queryNumAll';
+                document.body.appendChild(script)
+            }
+
+        </script>
+        <!-- <script src="http://192.168.5.4/0624/jsonp.php?jsonpcallback=queryAll"></script> -->
+
+    </body>
+
+</html>

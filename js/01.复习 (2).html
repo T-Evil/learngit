@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Document</title>
+        <style>
+            /* cssreset start */
+            * {
+                padding: 0;
+                margin: 0;
+            }
+
+            ul {
+                list-style: none;
+            }
+
+            /* cssreset end */
+            .clear:after {
+                content: '';
+                display: block;
+                clear: both;
+            }
+
+            .clear {
+                zoom: 1;
+            }
+
+            /* 导航栏 start */
+            .content {
+                width: 360px;
+            }
+
+            .navbar {
+                box-sizing: border-box;
+                width: 100%;
+                height: 36px;
+                line-height: 36px;
+                background: #f7f7f7;
+                overflow: hidden;
+            }
+
+            .navbar>li {
+                float: left;
+                box-sizing: border-box;
+                width: 58px;
+                line-height: 34px;
+                text-align: center;
+                border: 2px solid rgba(255, 255, 255, 0);
+                cursor: pointer;
+            }
+
+            .navbar>li:hover,
+            .navbar>li.active {
+                border-top: 2px solid #ff8400;
+                background: #fff;
+            }
+
+            /* 导航栏 end */
+            /* 卡片内容 start */
+            .main {
+                position: relative;
+            }
+
+            .main>div {
+                width: 360px;
+                height: 240px;
+                background: red;
+                position: absolute;
+                top: 0;
+                left: 0;
+            }
+
+            .main>.item1 {
+                background: red;
+            }
+
+            .main>.item2 {
+                background: blue;
+                display: none;
+            }
+
+            .main>.item3 {
+                background: green;
+                display: none
+            }
+
+            /* 卡片内容 end */
+        </style>
+    </head>
+
+    <body>
+
+        <div class="content">
+            <ul class="navbar clear">
+                <li class="active navitem1">图片</li>
+                <li class="navitem2">专栏</li>
+                <li class="navitem3">热点</li>
+            </ul>
+            <div class="main">
+                <div class="item1">
+                </div>
+                <div class="item2">
+                </div>
+                <div class="item3">
+                </div>
+            </div>
+
+        </div>
+
+
+
+        <script src="./lib/jquery-3.4.1.js"></script>
+        <script>
+            $('.navbar').click(ev => {
+                if ('LI' != ev.target.nodeName) {
+                    return
+                }
+                const el = $(ev.target)
+                $('.navbar>li').removeClass('active')
+                el.addClass('active')
+                let className = el.attr('class')
+                let re = /navitem\d{1}/
+                let arr =  className.match(re)
+                if(arr){
+                    let index = arr[0].match(/\d{1}/)[0]
+                    $(`.main>div`).hide()
+                    $(`.main>div:nth-child(${index})`).show()
+                }
+            })
+
+
+            let arr = [,[,[],],[,[],],]
+            console.log(arr)
+        </script>
+    </body>
+
+</html>

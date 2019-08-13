@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Document</title>
+    </head>
+
+    <body>
+        <input type="text" class="username">
+        <!-- <input type="text" class="pwd" onchange="pwdClick()"> -->
+        <input type="text" class="pwd" >
+
+
+
+        <script>
+            var username = document.querySelector('.username')
+            var pwd = document.querySelector('.pwd')
+            username.onfocus = function(){
+                console.log('onfocus')
+            }
+            username.onblur = function(){
+                console.log('onblur')
+            }
+
+            pwd.onchange = pwdClick
+
+            function pwdClick(){
+                console.log('pwdClick')
+            }
+
+            pwd.oninput = function(){
+                console.log('oninput...')
+            }
+
+        </script>
+    </body>
+
+</html>

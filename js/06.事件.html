@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <button class="btn">btn</button>
+    <script src="./lib/jquery-3.4.1.js"></script>
+    <script>
+        $('.btn').click({name:"123",age:19}, function( ev){
+            console.log(ev.data)
+        })
+        $('.btn').on('click',function(){
+            console.log($(this))
+        })
+        $('.btn')[0].onclick =function(){
+            console.log('.....')
+        }
+        
+        
+        
+    </script>
+</body>
+</html>

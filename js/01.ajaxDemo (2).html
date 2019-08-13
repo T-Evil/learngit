@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Document</title>
+    </head>
+
+    <body>
+        <img src="./imgs/load.png" alt="">
+        <button>更新图片</button>
+        <script>
+            let btn = document.querySelector('button')
+            let img = document.querySelector('img')
+            btn.onclick = (ev) => {
+                // 1. 创建 ajax 请求对象。
+                var xhr = null;
+                if (window.XMLHttpRequest) {
+                    xhr = new XMLHttpRequest();
+                } else {
+                    xhr = new ActiveXObject("Microsoft.XMLHTTP")
+                }
+                // 2. 设置请求参数。
+                xhr.open("get", "http://192.168.5.4/ajaxDemo.php", true);
+                //  3. 将请求提交给服务器
+                xhr.send();
+                // 4. 等待服务器响应。
+                xhr.onreadystatechange = function () {
+                    if (4 == xhr.readyState && 200 == xhr.status) {
+                        let urlList = null
+                        try {
+                            urlList =   JSON.parse(xhr.responseText)
+                        } catch (error) {
+                            console.log(error)
+                        }
+
+                        img.src = urlList[0].url
+
+                       
+                    }
+                }
+            }
+
+        </script>
+    </body>
+
+</html>

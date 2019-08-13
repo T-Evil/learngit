@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        img{
+            width: 100px; height: auto;
+            transition:.5s;
+        }
+        .weiyi{
+            transform :translate(200px,0) rotate(10deg ) scale(2,2) skew(0, 60deg);
+        }
+    </style>
+</head>
+<body>
+    <button class="btn">btn</button>
+    <img class="img1" src="./img/img1.jpg" >
+
+    <script>
+        let btn =  document.querySelector('.btn')
+        let img1 =  document.querySelector('.img1')
+        btn.onmouseenter = ()=>{
+            img1.classList.toggle('weiyi')
+        }
+        btn.onmouseout = ()=>{
+            img1.classList.toggle('weiyi')
+        }
+    </script>
+</body>
+</html>

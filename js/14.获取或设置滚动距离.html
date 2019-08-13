@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Document</title>
+        <style>
+            body {
+                height: 3000px;
+                width: 3000px;
+            }
+
+            .btn {
+                position: fixed;
+                right: 100px;
+                ;
+                top: 100px;
+            }
+            .gotop{
+                position: fixed;
+                right: 20px;
+                bottom: 20px;
+            }
+        </style>
+    </head>
+
+    <body>
+        <button class="btn">按钮</button>
+        <button class="gotop">回到顶部</button>
+
+
+        <script>
+            var btn = document.querySelector('.btn')
+            btn.onclick = function () {
+                console.log("y:" + getScrollY())
+                console.log("x:" + getScrollX())
+            }
+
+            var gotop = document.querySelector('.gotop')
+            gotop.onclick =function(){
+                setScrollX(500)
+                setScrollY(500)
+            }
+
+            function getScrollY() {
+                return window.pageYOffset || document.documentElement.scrollTop;
+            }
+            function getScrollX() {
+                return window.pageXOffset || document.documentElement.scrollLeft;
+            }
+
+
+            function setScrollX(num){
+                document.documentElement.scrollLeft = document.body.scrollLeft = num;
+            }
+            function setScrollY(num){
+                document.documentElement.scrollTop = document.body.scrollTop = num;
+            }
+
+        </script>
+    </body>
+
+</html>

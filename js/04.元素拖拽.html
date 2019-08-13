@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Document</title>
+        <style>
+            #drag {
+                width: 100px;
+                height: 100px;
+                background: blue;
+                /* user-select: none; */
+            }
+
+            #target {
+                width: 200px;
+                height: 200px;
+                background: green;
+                margin-top: 100px;
+                /* user-select: none; */
+            }
+        </style>
+    </head>
+
+    <body>
+        <div id="image" style="width:50px; height:50px; background:pink;">IMG</div>
+        <div id="drag" dragable="true">拖拽元素</div>
+
+        <div id="target">目标元素</div>
+        <script>
+            let drag = document.querySelector('#drag')
+            let target = document.querySelector('#target')
+            drag.ondragstart = function (ev) {
+                ev.dataTransfer.setData('k1', '一个测试数据');
+                // 拖拽鼠标样式
+                ev.dataTransfer.effectAllowed = 'linkMove';
+                // 拖拽镜像
+                ev.dataTransfer.setDragImage(this, 0, 0);
+                console.log('开始拖拽')
+                //传递数据给目标元素
+
+                this.style.background = 'yellow'
+            }
+            drag.ondragend = function () {
+                console.log('结束拖拽')
+                this.style.background = 'blue'
+            }
+            drag.ondrag = function () {
+                // console.log('拖拽。。。。')
+                // this.style.background = 'yellow'
+            }
+
+
+            // 拖拽元素进入时触发
+            target.ondragenter = function () {
+                this.style.background = 'gray';
+            }
+            // 拖拽元素离开时触发
+            target.ondragleave = function () {
+                this.style.background = 'blue';
+            }
+            // 拖拽元素进入时连续触发，离开时结束触发
+            target.ondragover = function (ev) {
+                console.log('ondragover');
+
+
+                var ev = ev || window.event;
+                //阻止默认事件，否则 ondrop 事件不能触发。
+                ev.preventDefault();
+            }
+            // 拖拽元素在在目标元素上释放时触发。必须在 ondragover 中阻止默认事件。
+            target.ondrop = function (ev) {
+                // alert("ondrop");
+                console.log(ev.dataTransfer.getData('k1'));
+            }
+
+
+        </script>
+    </body>
+
+</html>

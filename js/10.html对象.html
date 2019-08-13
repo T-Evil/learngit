@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+    .myta{
+        width: 300px; height: 300px;
+        border: 1px solid gray;
+        resize: none;
+        display: block;
+    }
+    
+    
+    </style>
+</head>
+<body>
+    <a class="a"></a>
+    <textarea class="myta"></textarea>
+
+    <script>
+        var a = document.querySelector('.a')
+        a.innerText = '百度'
+        a.target = '_blank'
+        a.href = 'https://www.baidu.com'
+        var ta = document.querySelector('.myta')
+        ta.oninput = function(){
+            console.log(this.value )
+        }
+
+
+    </script>
+</body>
+</html>

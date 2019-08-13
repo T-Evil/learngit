@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Document</title>
+    </head>
+
+    <body>
+        <script>
+            let opt = {
+                method: 'post',
+                url: 'http://192.168.5.4/ajaxDemo2.php',
+                // data: 'name=xiaoming&age=19',
+                data:{
+                    name:"xiaoming",
+                    age:19
+                },
+                callback: (err, res) => {
+                    console.log(err)
+                    console.log(res)
+                }
+            }
+
+            ajax(opt)
+
+
+            function ajax(opt) {
+                if (!opt) {
+                    console.log('参数为空')
+                    return
+                }
+                if (!opt.url) {
+                    console.log('请求地址为空')
+                    return
+                }
+               
+                if (!opt.method) {
+                    opt.method = 'get'
+                }
+                opt.method = opt.method.toLowerCase()
+                if('get' != opt.method || 'post' != opt.method){
+                    opt.method = 'get'
+                }
+                
+                let data =''
+                
+                if(opt.data){
+                    for(const key in opt.data){
+                        data += `${key}=${opt.data[key]}&`
+                    }
+                }
+
+                // 设置get请求的请求
+                if('get' ==  opt.method && opt.data){
+                    opt.url+= '?'+ data
+                }
+
+
+                let xhr = new XMLHttpRequest()
+                xhr.open(opt.method, opt.url, true)
+                xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+                xhr.send('post' ==  opt.method  ? data: null )
+                xhr.onreadystatechange = function () {
+                    if (4 == xhr.readyState && 200 == xhr.status) {
+                       opt.callback(null,  xhr.responseText)
+                    }else if(4 == xhr.readyState && 200 != xhr.status){
+                        opt.callback({err: xhr.status}, null)
+                    }
+                }
+            }
+
+        </script>
+    </body>
+
+</html>

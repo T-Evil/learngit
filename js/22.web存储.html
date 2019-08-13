@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Document</title>
+    </head>
+
+    <body>
+        <input type="text" class="username" placeholder="请输入用户名">
+        <input type="text" class="pwd" placeholder="请输入密码">
+        <button class="save">保存</button>
+        <script>
+            var uName = document.querySelector('.username')
+            var pwd = document.querySelector('.pwd')
+            var save = document.querySelector('.save')
+            save.onclick =function(){
+                // var userInput= {}
+                // userInput.username = uName.value
+                // userInput.password = pwd.value
+                var userInput = {
+                    username: uName.value,
+                    password: pwd.value
+                }
+                // console.log(userInput)
+                var objStr = JSON.stringify(userInput)
+                var date = new Date()
+                
+                localStorage.setItem(date.getTime()+"",objStr)
+            }
+
+        </script>
+    </body>
+
+</html>

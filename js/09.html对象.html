@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Document</title>
+    </head>
+
+    <body>
+        <img class="img1" src="./imgs/jianyu.png" alt="加载失败">
+        <script>
+            var img1 = document.querySelector('.img1')
+            var list = [
+                { name: '红虾', src: 'xia.png' },
+                { name: '剑鱼', src: 'jianyu.png' },
+                { name: '酒', src: 'jiu.png' },
+                { name: '龙虾', src: 'longxia.png' },
+                { name: '猕猴桃', src: 'mihoutao.png' },
+                { name: '牛油果', src: 'niuyouguo.png' },
+                { name: '葡萄', src: 'putao.png' },
+                { name: '水果', src: 'shuiguo.png' },
+                { name: '乌贼鱼', src: 'wuzeiyu.png' },
+                { name: '西红柿', src: 'xihongshi.png' },
+                { name: '西蓝花', src: 'xilanhua.png' },
+                { name: '香蕉', src: 'xiangjiao.png' },
+                { name: '樱桃', src: 'yingtao.png' },
+                { name: '圆白菜', src: 'yuanbaicai.png' },
+            ]
+
+
+            img1.onclick = function (ev) {
+                ev = ev || window.event
+                // console.log(ev.target)
+                // this.src = './imgs/jiu.png'
+                 
+                var index =  Math.floor( Math.random()* list.length )
+                var src = list[index].src
+                this.src = `./imgs/${src}`
+                this.title = list[index].name
+
+            }
+
+
+        </script>
+    </body>
+
+</html>

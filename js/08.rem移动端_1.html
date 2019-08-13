@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Document</title>
+        <style>
+            html {
+                font-size: 16px;
+            }
+
+            .box {
+                font-size: 1.125rem;
+                width: 12.5rem;
+                height: 18.75rem;
+                background: red;
+            }
+        </style>
+    </head>
+
+    <body>
+        <div class="box">hello</div>
+
+
+        <script>
+            // 先获取 可视区域的宽高 
+            var iw = document.documentElement.clientWidth;
+            var iH = document.documentElement.clientHeight;
+            // 对于小于320px的逻辑像素宽 则 卡住 不缩放啦不适配啦
+            iw = iw < 320 ? 320 : iw;
+            //获取 html元素
+            // cssrem 插件  比如 以ihone4 / 5为基准开发  320逻辑像素宽/20  16px
+            document.querySelector('html').style.fontSize = iw / 20 + 'px';
+            // 把 body的高度撑开
+            document.querySelector('body').style.height = iH + 'px';
+
+
+
+        </script>
+    </body>
+
+</html>

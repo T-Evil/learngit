@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Document</title>
+        <style>
+            ul {
+                list-style: none;
+            }
+
+            ul>li {
+                display: inline-block;
+                padding: 6px 16px;
+                border-radius: 5px;
+                margin-right: 10px;
+                margin-bottom: 10px;
+                /* 不让用户选中 */
+                user-select: none;
+            }
+
+            ul>li.randomActive {
+                background: yellow;
+            }
+
+            .boy {
+                background: red;
+                color: #fff;
+            }
+
+            .girl {
+                background: green;
+                color: #fff;
+            }
+
+
+
+            .btnGroup {
+                text-align: center;
+            }
+
+            .btnGroup>button {
+                background: #fff;
+                padding: 10px 20px;
+                border: 1px solid gray;
+                outline: none;
+                cursor: pointer;
+            }
+
+            button.startBtn {
+                border-color: blue;
+                color: blue;
+            }
+
+            button.startBtn:hover {
+                box-shadow: 0 0 8px rgba(162, 162, 250, 0.753);
+            }
+
+            button.endBtn {
+                border-color: #ad0202;
+                color: #ad0202;
+            }
+
+            button.endBtn:hover {
+                box-shadow: 0 0 8px rgba(173, 2, 2, 0.439);
+            }
+        </style>
+    </head>
+
+    <body>
+        <ul class='list'>
+            <!-- <li class="boy" title="19"><span>小明</span></li>
+            <li class="girl" title="19"><span>小明</span></li> -->
+        </ul>
+        <div class="btnGroup">
+            <button class="startBtn">开始</button>
+            <button class="endBtn">结束</button>
+        </div>
+
+        <script>
+
+            //生成列表
+            var tLength = createTable()
+            // randomActive
+            var list = document.querySelector('.list')
+            var sBtn = document.querySelector('.startBtn')
+            var eBtn = document.querySelector('.endBtn')
+            var t1 = null
+            var prevSelect = -1 //上一次选中的人
+            // 开始点名
+            sBtn.onclick = function () {
+                dianming()
+            }
+            // 停止点名
+            eBtn.onclick = function () {
+                clearInterval(t1)
+            }
+
+            function dianming() {
+                if (null != t1) {
+                    clearInterval(t1)
+                }
+                var listItems = list.children
+
+                t1 = setInterval(function () {
+                    var randomNum = Math.random()
+                    randomNum = randomNum * tLength
+                    // 取整
+                    var index = Math.floor(randomNum)
+                    if (-1 != prevSelect) {
+                        var className = listItems[prevSelect].className
+                        listItems[prevSelect].className = (-1 != className.indexOf('boy')) ? "boy" : 'girl'
+
+                    }
+
+                    listItems[index].className += ' randomActive'
+                    prevSelect = index
+                }, 200);
+            }
+
+
+            function createTable() {
+                var list = document.querySelector('.list')
+                var userList = [
+                    { name: '黄海丽', sex: '女', age: 26, eg: '大专', biye: "2019-10-31" },
+                    { name: '张小波', sex: '男', age: 23, eg: '自考大学', biye: "2019-10-31" },
+                    { name: '张奇', sex: '男', age: 22, eg: '高中', biye: "2019-10-31" },
+                    { name: '明尊通', sex: '男', age: 23, eg: '大专', biye: "2019-10-31" },
+                    { name: '王照翔', sex: '男', age: 27, eg: '本科', biye: "2019-10-31" },
+                    { name: '刘玮航', sex: '男', age: 22, eg: '大专', biye: "2019-10-31" },
+                    { name: '丁义', sex: '男', age: 22, eg: '', biye: "2019-10-31" },
+                    { name: '曾淦', sex: '男', age: 22, eg: '', biye: "2019-10-31" },
+                    { name: '廖焕军', sex: '男', age: 25, eg: '', biye: "2019-10-31" },
+                    { name: '刘龙光', sex: '男', age: 28, eg: '', biye: "2019-10-31" },
+                    { name: '唐英海', sex: '男', age: 24, eg: '', biye: "2019-10-31" },
+                    { name: '陈轩纬', sex: '男', age: 24, eg: '', biye: "2019-10-31" },
+                    { name: '伍开朗', sex: '男', age: 23, eg: '', biye: "2019-10-31" },
+                    { name: '陈曦', sex: '男', age: 25, eg: '', biye: "2019-10-31" },
+                    { name: '裴宇欣', sex: '男', age: 23, eg: '', biye: "2019-10-31" },
+                    { name: '陈雅强', sex: '男', age: 24, eg: '', biye: "2019-10-31" },
+                    { name: '朱中兴', sex: '男', age: 27, eg: '', biye: "2019-10-31" },
+                    { name: '何泽鑫', sex: '男', age: 25, eg: '', biye: "2019-10-31" },
+                    { name: '黄经桐', sex: '男', age: 27, eg: '', biye: "2019-10-31" },
+                    { name: '周清', sex: '男', age: 26, eg: '', biye: "2019-10-31" },
+                    { name: '李佼俊', sex: '男', age: 26, eg: '', biye: "2019-10-31" },
+                    { name: '谢华辉', sex: '男', age: 23, eg: '', biye: "2019-10-31" },
+                    { name: '胡维妮', sex: '女', age: 24, eg: '', biye: "2019-10-31" },
+                    { name: '孙露先', sex: '男', age: 23, eg: '', biye: "2019-10-31" },
+                    { name: '李亮', sex: '男', age: 25, eg: '', biye: "2019-10-31" },
+                    { name: '郑曙洋', sex: '男', age: 24, eg: '', biye: "2019-10-31" },
+                    { name: '林家豪', sex: '男', age: 23, eg: '', biye: "2019-10-31" },
+                    { name: '余尧', sex: '男', age: 27, eg: '', biye: "2019-10-31" },
+                    { name: '刘梓川', sex: '男', age: 22, eg: '', biye: "2019-10-31" },
+                    { name: '奉鑫', sex: '男', age: 24, eg: '', biye: "2019-10-31" },
+                    { name: '但宇村', sex: '男', age: 24, eg: '', biye: "2019-10-31" },
+                    { name: '王森', sex: '男', age: 21, eg: '', biye: "2019-10-31" },
+                    { name: '毛朋', sex: '男', age: 24, eg: '', biye: "2019-10-31" },
+                    { name: '冯南俭', sex: '男', age: 22, eg: '', biye: "2019-10-31" },
+                    { name: '宋一凡', sex: '男', age: 26, eg: '', biye: "2019-10-31" },
+                    { name: '谭燕燕', sex: '女', age: 26, eg: '', biye: "2019-10-31" },
+                    { name: '江松满', sex: '男', age: 22, eg: '', biye: "2019-10-31" },
+                    { name: '陈棉x', sex: '男', age: 23, eg: '', biye: "2019-10-31" },
+                    { name: '肖金辛', sex: '男', age: 23, eg: '', biye: "2019-10-31" },
+                    { name: '扬杰腾', sex: '男', age: 29, eg: '', biye: "2019-10-31" },
+                    { name: '汤金超', sex: '男', age: 25, eg: '', biye: "2019-10-31" },
+                    { name: '巩靖宇', sex: '男', age: 20, eg: '', biye: "2019-10-31" },
+                    { name: '李欣原', sex: '男', age: 22, eg: '', biye: "2019-10-31" },
+                    { name: '扬永帅', sex: '男', age: 26, eg: '', biye: "2019-10-31" },
+                    { name: '李培鹏', sex: '男', age: 25, eg: '', biye: "2019-10-31" },
+                    { name: '石娟', sex: '男', age: 20, eg: '', biye: "2019-10-31" },
+                    { name: '刘硕', sex: '男', age: 27, eg: '', biye: "2019-10-31" },
+                    { name: '钱骏', sex: '男', age: 23, eg: '', biye: "2019-10-31" },
+                    { name: '蒋贤', sex: '男', age: 25, eg: '', biye: "2019-10-31" },
+                    { name: '李扬', sex: '男', age: 23, eg: '', biye: "2019-10-31" },
+                    { name: '黄中憬', sex: '男', age: 24, eg: '', biye: "2019-10-31" },
+                    { name: '胡锦航', sex: '男', age: 22, eg: '', biye: "2019-10-31" },
+                    { name: '李思思', sex: '女', age: 21, eg: '', biye: "2019-10-31" },
+                    { name: '雷杰', sex: '男', age: 28, eg: '', biye: "2019-10-31" },
+                    { name: '孙泽华', sex: '男', age: 27, eg: '', biye: "2019-10-31" },
+                    { name: '谢贤堂', sex: '男', age: 23, eg: '', biye: "2019-10-31" },
+                    { name: '王梦阳', sex: '男', age: 22, eg: '', biye: "2019-10-31" },
+                    { name: '郭豪', sex: '男', age: 23, eg: '', biye: "2019-10-31" },
+
+                ]
+
+                for (var i = 0; i < userList.length; i++) {
+                    var user = userList[i]
+                    var li = document.createElement('li')
+                    li.className = user.sex == '男' ? 'boy' : 'girl'
+                    li.setAttribute('title', user.age)
+                    li.innerHTML = `<span>${user.name}</span>`
+                    list.appendChild(li)
+                }
+                return userList.length
+            }
+        </script>
+    </body>
+
+</html>

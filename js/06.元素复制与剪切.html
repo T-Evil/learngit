@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Document</title>
+    </head>
+
+    <body>
+        <ul class="list">
+            <li class="item1">苹果</li>
+            <li class="item2">香蕉</li>
+            <li class="item3">桔子</li>
+            <li class="item4">西瓜</li>
+        </ul>
+        <script>
+            var list = document.querySelector('.list')
+            var item1 = document.querySelector('.item1')
+            // list.appendChild(item1)
+            // list.insertBefore(item1, list.lastElementChild.previousElementSibling)
+            var newNode =  item1.cloneNode(true)
+            // 复制
+            list.appendChild( newNode )
+            // 剪切（因为newNode在25行已经被添加到HTML页面中）
+            list.insertBefore(newNode, list.lastElementChild.previousElementSibling)
+
+
+        </script>
+    </body>
+
+</html>

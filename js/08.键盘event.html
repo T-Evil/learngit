@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        textarea{
+            width: 500px; height: 500px;
+        }
+    </style>
+</head>
+<body>
+    <textarea class="userinput"> </textarea>
+    
+    <script>
+        var ta = document.querySelector('textarea.userinput')
+        // ta.onkeypress = function(ev){
+        ta.onkeydown = function(ev){
+            ev = ev || window.event
+            console.log(ev.keyCode)
+            // console.log(ev.target)
+            // console.log(ev.srcElement)
+            console.log(ev)
+            console.log(ev.altKey)
+            console.log(ev.ctrlKey)
+            console.log(ev.shiftKey)
+
+
+            // 阻止默认事件
+            ev.preventDefault() 
+            return false
+        }
+    
+    </script>
+</body>
+</html>

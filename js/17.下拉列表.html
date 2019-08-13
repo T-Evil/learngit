@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Document</title>
+    </head>
+
+    <body>
+        <select>
+            <!-- <optgroup label="广东"> -->
+                <option value="zh" >深圳</option>
+                <option value="gz" >广州</option>
+            <!-- </optgroup> -->
+            <optgroup label="湖南">
+                <option value="cs" selected>长沙</option>
+                <option value="zz">株洲</option>
+            </optgroup>
+        </select>
+
+
+        <script>
+            var ss = document.querySelector('select')
+            ss.onchange =function(){
+                console.log(this.value)
+            }
+
+        </script>
+    </body>
+
+</html>

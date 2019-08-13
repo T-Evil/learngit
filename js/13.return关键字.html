@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Document</title>
+    </head>
+
+    <body>
+        <script>
+            function fun() {
+
+            }
+
+            var value = fun()
+            console.log(value) //undefined
+            console.log(fun()) //undefined
+            console.log('-----------------------')
+
+            function myFun() {
+                return 'hello'
+            }
+            console.log(myFun())
+
+            console.log('-------------------------')
+            function myFun1() {
+                //    return关键字后面可以不跟返回数据
+                return
+            }
+
+            console.log( myFun1() )
+
+        </script>
+    </body>
+
+</html>

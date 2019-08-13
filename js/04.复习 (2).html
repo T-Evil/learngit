@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Document</title>
+    </head>
+
+    <body>
+        <button class="btn">按钮</button>
+        <script>
+            var btn = document.querySelector('.btn')
+            btn.onclick = fun
+
+            var array = new Array()
+            array = new Array(10)
+            array = new Array(1, 1, 2, 2, 5, 76, 8)
+
+            function fun() {
+                var arr = []
+                arr = [1, 2, 23, 2, 2, 5, 8]
+                //  下标   元素
+                //  下标： 0  长度-1
+                //  长度：从1开始计数。
+
+                arr[0] = 1999
+                console.log(arr[0])
+
+                for (var i = 0; i < arr.length; i++) {
+                    // 改变了数组的长度，程序会死循环
+                    arr[arr.length] = 199
+                    console.log(arr[i])
+                }
+            }
+
+
+
+
+
+
+        </script>
+    </body>
+
+</html>

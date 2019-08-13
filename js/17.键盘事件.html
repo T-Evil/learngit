@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Document</title>
+        <style>
+            .ta{
+                width: 300px; height: 200px;
+                border: 1px solid gray;
+            }
+
+        </style>
+    </head>
+
+    <body>
+        <textarea class="ta"></textarea>
+
+        <script>
+            var ta = document.querySelector('.ta')
+            ta.onkeydown = function(){
+                console.log('onkeydown')
+            }
+            ta.onkeypress = function(){
+                console.log('onkeypress')
+            }
+            ta.onkeyup = function(){
+                console.log('onkeyup')
+            }
+
+
+        </script>
+    </body>
+
+</html>

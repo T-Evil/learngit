@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Document</title>
+    </head>
+
+    <body>
+
+        <script>
+            var priceList = [
+                { city: '深圳', price: 0 },
+                { city: '广州', price: 60 },
+                { city: '虎门', price: 50 },
+                { city: '中山', price: 40 },
+                { city: '珠海', price: 36 },
+                { city: '澳门', price: 34 },
+                { city: '香港', price: 89 }
+            ]
+
+            var price = getPrice(priceList, '香港', '深圳')
+            console.log(price)
+
+            function getPrice(priceList, start, end) {
+                // 查找起点和终点的下标
+                var startIndex = -1
+                var endIndex = -1
+                for (var i = 0; i < priceList.length; i++) {
+                    if (start === priceList[i].city) {
+                        startIndex = i
+                    }
+                    if (end === priceList[i].city) {
+                        endIndex = i
+                    }
+                    if (-1 != startIndex && -1 != endIndex) {
+                        break
+                    }
+                }
+
+                if (-1 == startIndex || -1 == endIndex) {
+                    console.log('起点或终点有错！')
+                    return null
+                }
+
+                // 如果是反向的则交换起点和终点
+                if (startIndex > endIndex) {
+                    var value = startIndex
+                    startIndex = endIndex
+                    endIndex = value
+                }
+                var price = 0
+                for (var i = startIndex + 1; i <= endIndex; i++) {
+                    price += priceList[i].price
+                }
+
+
+                return {
+                    start: start,
+                    end: end,
+                    price: price,
+                }
+            }
+
+
+
+
+        </script>
+    </body>
+
+</html>

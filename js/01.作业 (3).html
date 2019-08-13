@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Document</title>
+        <style>
+            .colorGroup{ user-select: none; }
+            .colorGroup>label{
+                display: inline-block;
+                height: 15px; width: 20px;
+                cursor: pointer;
+            }
+            .colorGroup>[type='checkbox']{ cursor: pointer; }
+
+            label[for="red"]{ background: red;  }
+            label[for="blue"]{ background: blue;  }
+            label[for="yellow"]{ background: yellow;  }
+            label[for="green"]{ background: green;  }
+            label[for="orange"]{ background: orange;  }
+
+            .box{
+                height: 500px;
+                border: 1px solid gray;
+            }
+
+        </style>
+    </head>
+
+    <body>
+        <div class="colorGroup">
+            <label for="red"></label>
+            <input type="checkbox" name="colors" value="red" id="red">
+
+            <label for="blue"></label>
+            <input type="checkbox" name="colors" value="blue" id="blue">
+
+            <label for="yellow"></label>
+            <input type="checkbox" name="colors" value="yellow" id="yellow">
+
+            <label for="green"></label>
+            <input type="checkbox" name="colors" value="green" id="green">
+
+            <label for="orange"></label>
+            <input type="checkbox" name="colors" value="orange" id="orange">
+        </div>
+
+        <div class="box">
+            <!-- <div style="height: 20px; background: red"></div> -->
+        </div>
+
+        <script>
+            var cbs =  document.querySelectorAll(".colorGroup>[type='checkbox']")
+            var box =  document.querySelector('.box')
+            for(var i=0; i<cbs.length; i++ ){
+                cbs[i].onclick = function(){
+                    box.innerHTML = ''
+                    var color =  getColors(cbs);
+                    // 遍历对象
+                    for (var key in color) {
+                        console.log( color[key] )
+                        if(color[key]){
+                            var div = document.createElement('div')
+                            div.style.background = key
+                            div.style.height = '20px'
+                            box.appendChild(div)
+                        }
+                    }
+                }
+            }
+
+            function getColors(cbs){
+                var color = {}
+                for(var i=0; i<cbs.length; i++){
+                    // console.log(cbs[i].value)
+                    // console.log(cbs[i].checked)
+                    color[cbs[i].value] = cbs[i].checked
+                }
+                return color
+            }
+
+
+        </script>
+    </body>
+
+</html>

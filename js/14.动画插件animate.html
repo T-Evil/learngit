@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Document</title>
+        <link rel="stylesheet" href="./lib/animate.css">
+        <style>
+        [src*="img1"]{
+            width:300px;height:  auto;
+        }
+        </style>
+    </head>
+
+    <body>
+        <h2 class="animated infinite  bounce delay-3s">hello</h2>
+        <img src="./img/img1.jpg" alt="">
+        <button class="btn">btn</button>
+
+
+
+
+        <script>
+            let btn =  document.querySelector('.btn')
+            // let img1 =  document.querySelector('[src*="img1"]')
+            btn.onclick = ev=>{
+               animateCSS('[src*="img1"]','bounce',()=>{
+                   console.log('动画。。。。')
+               })
+                
+            }
+
+
+
+            function animateCSS(element, animationName, callback) {
+                const node = document.querySelector(element)
+                node.classList.add('animated', animationName)
+
+                function handleAnimationEnd() {
+                    node.classList.remove('animated', animationName)
+                    node.removeEventListener('animationend', handleAnimationEnd)
+
+                    if (typeof callback === 'function') callback()
+                }
+
+                node.addEventListener('animationend', handleAnimationEnd)
+            }
+
+
+        </script>
+    </body>
+
+</html>

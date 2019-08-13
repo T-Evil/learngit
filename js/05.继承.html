@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // es5
+        // 父类
+        function Person(name,age,sex){
+            this.name = name
+            this.age = age
+            this.sex = sex
+            this.say = function(){
+                console.log('大家好我叫'+this.name)
+            }
+        }
+
+        // 子类
+        function Man(name,age,job){
+            // 构造函数的伪装
+            // 实例化父类
+            Person.call(this, name,age,'男')
+            this.job = job
+            this.work =function (){
+                console.log("大家好，我的工作是"+ this.job)
+            }
+        }
+
+        Person.prototype.color = '白'
+        // 继承父类中原型中属性与方法
+        Man.prototype = Person.prototype
+
+        // 实例化
+        var p1 = new Person('白人',19,'男')
+        var xm1 = new Man('xiaoming',18, '学生')
+        var xm2 = new Man('xiaobai',19, '学生')
+
+        console.log( xm1 instanceof Man )        
+        console.log( xm1 instanceof Object )        
+        console.log( xm1 instanceof Person )    
+        console.log('-----------------------')
+
+        console.log('sex' in Man )    
+        console.log( xm1.hasOwnProperty('sex') )
+
+
+
+       
+
+
+
+    
+    </script>
+</body>
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Document</title>
+    </head>
+
+    <body>
+        <script>
+            // function myFun(num) {
+            //     return num
+            // }
+
+
+            // 箭头函数
+            let myFun1 = (num1, num2) => {
+                return num1 + num2
+            }
+
+            let value = myFun1(1, 3)
+            console.log(value)
+
+            console.log('------------------------')
+            //如果只有一个参数，形参列表的圆括号可以省略
+            let myFun2 = num1 => 
+                // 如果只有一条返回语句，那么花括号和return都可以省略
+                num1 + "hello"
+
+            console.log(myFun2(999))
+
+
+        </script>
+    </body>
+
+</html>

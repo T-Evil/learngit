@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Document</title>
+        <style>
+            #target {
+                width: 90%;
+                height: 200px;
+                border: 1px solid gray;
+                margin: 0 auto;
+                line-height: 200px;
+                text-align: center;
+                color: #fff;
+                font-size: 2em;
+            }
+            .targetActive{
+                background: rgb(190, 190, 190);
+                box-shadow:  0 0 8px rgb(204, 204, 204);
+            }
+        </style>
+    </head>
+
+    <body>
+        <div id="target"></div>
+
+
+
+        <script>
+            let target = document.getElementById('target');
+            // 拖拽元素进入时触发
+            target.ondragenter = function () {
+                this.innerText = '松开鼠标开始上传';
+                this.classList.add('targetActive')
+            }
+            // 拖拽元素离开时触发
+            target.ondragleave = function () {
+                this.innerText = '';
+                this.classList.remove('targetActive')
+            }
+            // 拖拽元素进入时连续触发，离开时结束触发
+            target.ondragover = function (ev) {
+                //阻止默认事件，否则 ondrop 事件不能触发。
+                ev.preventDefault();
+            }
+            // 拖拽元素在在目标元素上释放时触发。必须在 ondragover 中阻止默认事件。
+            target.ondrop = function (ev) {
+                this.innerText = '';
+                this.classList.remove('targetActive')
+
+                var fs = ev.dataTransfer.files;
+                console.log(fs)
+                let fData = new FormData()
+                fData.append('pic', fs[0])
+                fData.append('picDir','img1')
+
+                let xhr = new XMLHttpRequest()
+                xhr.open('post', 'http://192.168.5.4/0624/upload.php',true)
+                xhr.send(fData)
+                xhr.onreadystatechange = function(){
+                    if(4 == this.readyState && 200 == this.status){
+                        console.log(this.responseText)
+                    }
+                }
+
+                // 阻止浏览器默认事件，否则浏览器会打开该文件
+                ev.preventDefault();
+            }
+
+
+        </script>
+    </body>
+
+</html>

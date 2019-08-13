@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Document</title>
+        <script>
+            // 普通事件
+            // window.onload = function () {
+            //     var btn1 = document.querySelector('.btn1')
+            //     console.log(btn1)
+            // }
+
+            bindEvent(window, 'load', function(){
+                console.log('window.onload2')
+            })
+            bindEvent(window, 'load', function(){
+                console.log('window.onload1')
+            })
+           
+
+
+
+             /*
+            * 参数1：要绑定事件的元素。
+            * 参数2：要绑定的事件名称。
+            * 参数3：要绑定事件回调。
+            */
+            function bindEvent(obj, eventName, callback) {
+                if (obj.addEventListener) {
+                    obj.addEventListener(eventName, callback, false);
+                } else {
+                    obj.attachEvent("on" + eventName, callback);
+                }
+            }
+
+        </script>
+    </head>
+
+    <body>
+
+        <button class="btn1">按钮</button>
+        <script>
+           
+           
+        </script>
+    </body>
+
+</html>

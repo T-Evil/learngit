@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Document</title>
+    </head>
+
+    <body>
+        <script>
+            var arr = [1, 2, 24, 5, 6, 78, 8, 0, 999, -1]
+            console.log(arr)
+            maoPao(arr,'j')
+
+            console.log(arr)
+            /*
+            参数1：要排序的数组
+            参数2:j 降序，s升，不写或其它值默认也是升充
+            */
+            function maoPao(arr, flag) {
+                for (var i = 0; i < arr.length; i++) {
+                    for (var j = i + 1; j < arr.length; j++) {
+                        // console.log('i:'+ i+",j:"+j)
+                        if ('j' !== flag) {
+                            if (arr[i] > arr[j]) {
+                                var value = arr[i]
+                                arr[i] = arr[j]
+                                arr[j] = value
+                            }
+                        }else{
+                            if (arr[i] < arr[j]) {
+                                var value = arr[i]
+                                arr[i] = arr[j]
+                                arr[j] = value
+                            }
+                        }
+
+                    }
+                }
+            }
+
+        </script>
+    </body>
+
+</html>

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Document</title>
+    </head>
+
+    <body>
+        <script>
+            var str = "  qq号大全，984033324，14523245123-22q2222ddddd，4561  ";
+            var re1 = /\d+/g
+            var re2 = /^[1-9]\d{4,11}$/g
+            var numArr =  str.match(re1)
+            console.log(numArr)
+            for(var i=0; i<numArr.length; i++){
+                var result =  numArr[i].match(re2)
+                if(result){
+                    console.log(result[0])
+                }else{
+                    console.log('不是QQ')
+                }
+            }
+            console.log('--------------------------------------')
+            var email = '9990008889999@qq.cn';
+            var re3 = /^\w{1,}@[a-z0-9]+\.[a-z]{2,6}$/;
+            console.log(re3.test(email))
+
+            console.log('--------------------------------------')
+            str = '  hsdf   affd   afaf   fasdf'
+            var re4 = /^\s+|\s+$/g
+            str =  str.replace(re4, '')
+            console.log(str)
+
+            console.log('--------------------------------------')
+            var re5 = /[\u4e00-\u9fa5]/
+            str = 'hello 你好'
+            console.log(re5.test( str ))
+
+            console.log('--------------------------------------')
+            str = 'welcome to,shengzhen!'
+            var re6 = /\bto\b/
+            var value = 'welco'
+            var reStr = '\\b' + value + "\\b"
+            var re7 = new RegExp(reStr)
+
+
+            console.log(re6.test(str ))
+            console.log(re7.test(str ))
+        </script>
+    </body>
+
+</html>

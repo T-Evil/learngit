@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Document</title>
+        <style>
+            * {padding: 0; margin: 0;}
+            ul {
+                list-style: none;
+                background: rgb(218, 218, 218);
+                padding:  0 10%;
+                overflow: hidden;
+            }
+            ul>li{
+                display: block;
+                float: left;
+                width: 60px; height: 30px;
+                /* background-color: green; */
+                margin-right: 1px;
+                cursor: pointer;
+                color: red;
+                background-image: linear-gradient(green,yellow);
+                transition: all .5s ;
+            }
+            ul>li:hover{
+                display: block;
+                float: left;
+                width: 60px; height: 30px;
+                /* background: yellow; */
+                margin-right: 1px;
+                cursor: pointer;
+                background-image: linear-gradient(yellow,rgb(128, 0, 53));
+                color: blue;
+               
+            }
+        </style>
+    </head>
+
+    <body>
+        <ul>
+            <li>1</li>
+            <li>2</li>
+            <li>3</li>
+            <li>4</li>
+            <li>5</li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+        </ul>
+    </body>
+
+</html>

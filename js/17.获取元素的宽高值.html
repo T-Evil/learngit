@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .box{
+            width: 500px;
+            height: 500px;
+            padding: 10px;
+            border: 5px solid green;
+            background: red;
+            
+        }
+    </style>
+</head>
+<body>
+    <div style="height: 2000px;">123</div>
+    <div class="box"></div>
+    <button class="btn" style="margin:100px;">btn</button>
+    <script>
+        var box = document.querySelector('.box')
+        var btn = document.querySelector('.btn')
+       
+        btn.onclick =btnClick
+        
+        
+        function btnClick(){
+            console.log("高：" +  box.offsetHeight)
+            console.log("宽：" + box.offsetWidth)
+            var rect =  box.getBoundingClientRect()
+            console.log(rect )
+        }
+    
+    </script>
+</body>
+</html>

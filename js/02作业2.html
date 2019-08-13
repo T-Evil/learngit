@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Document</title>
+        <style>
+            
+            html,body{
+                height: 100%;
+            }
+            body {
+                margin: 0;
+            }
+            
+            .box {
+                width: 50px;
+                height: 50px;
+                background: red;
+                position: absolute;
+                top: 0;
+                left: 0;
+            }
+        </style>
+    </head>
+
+    <body>
+        <div class="box" style="top: 0;left:0;"></div>
+        <script>
+            var box = document.querySelector('.box')
+
+            var body = document.body
+            // 键盘事件
+            body.onkeydown = function (ev) {
+                ev = ev || window.event
+                switch (ev.keyCode) {
+                    case 81:
+                        console.log('左')
+                        var leftNumStr = box.style.left
+                        var leftNum = parseInt(leftNumStr)
+                        // console.log(leftNum)
+                        if (0 >= leftNum) {
+                            break;
+                        } 
+                        // 判断下次向左是否为负值
+                        if(50 > leftNum){
+                            leftNum = 0
+                        }else{
+                            leftNum -= 50
+                        }
+                        // var leftNum = (leftNum -= 50) < 0 ? 0 :leftNum
+                        box.style.left = leftNum + "px"
+                        // console.log(box.style.left)
+                        break
+                    case 69:
+                        console.log('右')
+                        var leftNumStr = box.style.left
+                        var leftNum = parseInt(leftNumStr)
+                        leftNum += 50
+                        box.style.left = leftNum + "px"
+
+                        break
+                    case 87:
+                        console.log('上')
+                        var topNumStr = box.style.top
+                        var topNum = parseInt(topNumStr)
+                        if(0 >=topNum){
+                            break;
+                        }
+                        if(50 < topNum){
+                            topNum -= 50
+                        }else{
+                            topNum = 0
+                        }
+                        box.style.top = topNum + "px"
+                        break
+                    case 83:
+                        console.log('下')
+                        var topNumStr = box.style.top
+                        var topNum = parseInt(topNumStr)
+                        topNum += 50
+                        box.style.top = topNum + "px"
+
+                        break
+
+                }
+
+
+
+                // 阻止默认事件
+                // ev.preventDefault()  
+                // return false 
+            }
+
+            // 鼠标事件
+            body.onclick = function(ev){
+                ev = ev || window.event
+                console.log('x'+ ev.pageX +",y"+ ev.pageY)
+                box.style.left = ev.pageX+"px"
+                box.style.top = ev.pageY+"px"
+            }
+
+        </script>
+    </body>
+
+</html>

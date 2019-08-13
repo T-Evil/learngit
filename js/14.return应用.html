@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Document</title>
+    </head>
+
+    <body>
+        <script>
+            // 加法：‘算术运算’
+            function add(num1, num2) {
+                // true 非数字、false 数字
+                if (isNaN(num1)  || isNaN(num2)) {
+                    
+                    alert('操作数不是一个数字')
+                    // 结束当前的函数执行
+                    return
+                }
+                num1 = parseFloat( num1 )
+                num2 = parseFloat( num2 )
+                //是数字
+                return num1 + num2
+
+            }
+            var value = add('123', 9)
+            console.log(value)
+
+           
+
+        </script>
+    </body>
+
+</html>

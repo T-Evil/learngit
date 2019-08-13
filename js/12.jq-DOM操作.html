@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <ul class="color">
+        <li>red</li>
+        <li>blue</li>
+        <li>green</li>
+        <li>yellow</li>
+    </ul>
+    <ul class="list">
+        <li>hello</li>
+    </ul>
+    <script src="./lib/jquery-3.4.1.js"></script>
+    <script>
+        $('.list').append('<li class="item">1</li>')
+        $('.list').append('<li class="item">1</li>')
+        $('.list').append($('.color>li:nth-child(2)'))
+
+        
+
+
+        // $('ul').append(function(index,html){
+        //     // console.log(index)
+        //     // console.log(html)
+        //     return '<li class="item">1</li>'
+        // })
+    </script>
+</body>
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Document</title>
+        <link rel="stylesheet" href="./jqUI/jquery-ui.min.css">
+    </head>
+
+    <body>
+        <input type="text" class="datepicker">
+        <input type="text" class="datepicker">
+
+        <script src="./jqUI/jquery.js"></script>
+        <script src="./jqUI/jquery-ui.js"></script>
+        <script src="./jqUI/datepicker-zh-CN.js"></script>
+        <script>
+            $(function () {
+                $(".datepicker").datepicker({
+                    dateFormat: "yy-mm-dd"
+                });
+                $( '.datepicker' ).datepicker( $.datepicker.regional[ "zh" ] );
+            });
+
+        </script>
+    </body>
+
+</html>

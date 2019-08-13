@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Document</title>
+        <style>
+            * {
+                margin: 0;
+                padding: 0;
+            }
+            body{
+                height: 3000px;
+                width: 5000px;
+            }
+            .box {
+                width: 700px;
+                height: 100px;
+                /* margin: 10px auto; */
+                border: 1px solid gray;
+                box-sizing: border-box;
+            }
+
+            .userinput {
+                display: block;
+                width: 700px;
+                height: 100px;
+                /* margin: 10px auto; */
+                border: 1px solid gray;
+                resize: none;
+                box-sizing: border-box;
+            }
+        </style>
+    </head>
+
+    <body>
+        <div class="box"></div>
+        <textarea class="userinput"></textarea>
+        <script>
+            var box = document.querySelector('.box')
+            var userinput = document.querySelector('.userinput')
+            box.onclick = function (ev) {
+                ev = ev || window.event
+                //可视区
+                console.log( "clientX: " +  ev.clientX + " , clientY: "+ ev.clientY )
+                console.log( "x: " +  ev.x + " , y: "+ ev.y )
+                // 页面
+                console.log( "pageX: " +  ev.pageX + " , pageY: "+ ev.pageY )
+                // 事件源
+                console.log(ev.target)
+                console.log(ev.srcElement)
+
+                console.log(ev)
+
+            }
+            userinput.onkeydown = function (ev) {
+                ev = ev || window.event
+                console.log(ev)
+            }
+
+        </script>
+    </body>
+
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .box{
+            border: 1px solid red;
+        }
+    
+    </style>
+</head>
+<body>
+    <div class="box">
+        <p id='p1'>这是一个段落</p>
+        <!-- <div title="hello"> 你好 </div> -->
+    </div>
+
+
+    <script>
+        var box = document.querySelector('.box')
+        var p1= document.querySelector('#p1')
+        var div =  document.createElement('div')
+        var dTitle = document.createAttribute('title')
+        dTitle.value = 'hello' 
+        var dText =  document.createTextNode('你好')
+        // console.log(div.nodeType) //1
+        // console.log(dTitle.nodeType) //2
+        // console.log(dText.nodeType) //3
+
+        div.appendChild(dText)
+        div.setAttributeNode(dTitle)
+        // 
+        box.appendChild(div)
+        box.appendChild(div)
+
+        div.innerText = 'hello js'
+
+        // box.insertBefore(div, p1)
+
+
+
+    
+    </script>
+</body>
+</html>

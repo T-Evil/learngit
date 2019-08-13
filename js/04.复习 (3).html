@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Document</title>
+    </head>
+
+    <body>
+
+        <script>
+            class Man {
+                constructor(name, age) {
+                    this.name = name
+                    this.age = age
+                }
+                run() {
+                    console.log(this.name + " run...")
+                }
+            }
+            var m1 =  new Man("xiaomaing",19)
+            m1.run()
+
+            console.log("name" in m1)
+            m1.hasOwnProperty('')
+            // delete m1.name
+
+            for (var key in m1) {
+                if (m1.hasOwnProperty(key)) {
+                    
+                }
+            }
+
+
+
+        </script>
+    </body>
+
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Document</title>
+    </head>
+
+    <body>
+        <button class="btn"> btn</button>
+
+        <script>
+            document.querySelector('.btn').onclick = ev => {
+                //1.获取请求对象
+                let xhr = new XMLHttpRequest()
+                // 2. 设置请求参数 
+                // true 异步
+                // false 同步 等待服务的响应，
+                xhr.open('get', 'http://192.168.5.4/ajaxDemo2.php?name=xiaoming&age=19', false)
+
+                // 3.发送请求
+                xhr.send()
+                console.log(xhr.responseText);
+
+                // 4. 等待服务器响应
+                xhr.onreadystatechange = function () {
+                    if (4 == xhr.readyState && 200 == xhr.status) {
+                        console.log(xhr.responseText);
+                    }
+                }
+                console.log('--->>>>>>>>>>>>>>>>>>>>>')
+            }
+
+        </script>
+    </body>
+
+</html>

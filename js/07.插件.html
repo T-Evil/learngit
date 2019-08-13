@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Document</title>
+    </head>
+
+    <body>
+        <input type="checkbox" name="link" id="">
+        <input type="checkbox" name="link" id="">
+        <input type="checkbox" name="link" id="">
+        <input type="checkbox" name="link" id="">
+        <input type="checkbox" name="link" id="">
+        <input type="checkbox" name="link" id="">
+
+        <input type="checkbox" name="" id="">
+        <input type="checkbox" name="" id="">
+        <input type="checkbox" name="" id="">
+        <input type="checkbox" name="" id="">
+        <input type="checkbox" name="" id="">
+
+        <div>
+            <button class="btn">按钮</button>
+        </div>
+        
+        <script src="./lib/jquery-3.4.1.js"></script>
+        <script src="./lib/myjquery.js"></script>
+        
+        <script>
+            $('.btn').click(function(){
+                
+                if(! $("[name='link']:checked").length){
+                    $("[name='link']").check()
+                }else{
+                    $("[name='link']").uncheck()
+                }
+            })
+            // $("[name='link'][type=checkbox]").check();
+            // $("[name='link'][type=checkbox]").uncheck();
+
+           console.log( $.min(1,2))
+           console.log( $.max(1,2))
+        </script>
+    </body>
+
+</html>

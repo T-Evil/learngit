@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Document</title>
+        <style>
+            .box {
+                width: 200px;
+                border: 1px solid gray;
+                text-align: center;
+                margin: 0 auto;
+                background: red;
+            }
+
+            .box>h2 {
+                text-align: center;
+                margin: 10px 0 30px 0;
+                height: 50px;
+
+            }
+
+            .box>button {
+                margin: 20px 0;
+                cursor: pointer;
+            }
+        </style>
+    </head>
+
+    <body>
+        <div class="box">
+            <h2 id='name'></h2>
+            <button id='btn'>开始</button>
+        </div>
+
+
+
+
+        <!-- 删除数组中最后一个元素并返回给调用者 -->
+        <!-- <script src="./js/1.mypop.js"></script> -->
+        <!-- 获取系统时间 -->
+        <!-- <script src="./js/2.time.js"></script> -->
+        <!-- 随机点名 -->
+        <script src="./js/3.dianMing.js"></script>
+        <script>
+            var userName = document.getElementById('name')
+            var btn = document.getElementById('btn')
+            var flag = false //false 、停止状态，true 开始状态
+            var t1 = null //定时器
+
+            btn.onclick = function () {
+                // 停止状态 ：开始随机
+                if (!flag) {
+                    t1 = setInterval(function () {
+                        var user =  getRandomName(nameList)
+                        userName.innerText = user.name
+                        
+                    }, 10)
+                    btn.innerText = '停止'
+
+                }else{ //开始状态：停止随机
+                    clearInterval(t1)
+                    btn.innerText = '开始'
+                }
+                // 修改状态
+                flag = !flag
+            }
+
+        </script>
+
+    </body>
+
+</html>

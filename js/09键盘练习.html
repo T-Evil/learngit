@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Document</title>
+        <style>
+            html,body{
+                height: 100%;
+            }
+            body {
+                margin: 0;
+               
+                
+            }
+            .box {
+                width: 15px;
+                height: 15px;
+                background: orange;
+                position: absolute;
+                top: 0;
+                left: 0;
+            }
+        </style>
+    </head>
+
+    <body>
+        <div class="box"></div>
+
+
+        <script>
+            var body = document.body
+            var box = document.getElementsByClassName('box')[0]
+            var rect =  body.getBoundingClientRect()
+            console.log(rect)
+
+            body.onkeydown = function (ev) {
+                ev = ev || window.event
+                console.log(ev.keyCode)
+                if (!box.style.left) {
+                    var left = 0
+                } else {
+                    console.log()
+                    var left = parseInt(box.style.left)
+                }
+                if (!box.style.top) {
+                    var top = 0
+                } else {
+                    var top = parseInt(box.style.top)
+                }
+
+                switch (ev.keyCode) {
+                    case 37: //左
+                    if(left>0){
+                        box.style.left = left - 15 + 'px'
+                    }
+                        break;
+                    case 38: //上
+                    if(top>0){
+                        box.style.top = top - 15 + 'px'
+                    }
+                        break;
+                    case 39: //右
+                    if(left<rect.width-15){
+                        box.style.left = left +15 + 'px'
+                    }
+                        
+                        break;
+                    case 40: //下
+                    if(top<rect.height-15){
+                        box.style.top = top + 15 + 'px'
+                    }
+                        break;
+                }
+
+            }
+
+        </script>
+    </body>
+
+</html>

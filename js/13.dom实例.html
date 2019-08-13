@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Document</title>
+        <style>
+            ul {
+                padding: 10px 0;
+                list-style: none;
+                width: 200px;
+                min-height: 300px;
+                border: 1px solid gray;
+                user-select: none;
+            }
+
+            [type='checkbox'],
+            label {
+                cursor: pointer;
+            }
+
+            .btnGroup {
+                width: 200px;
+            }
+
+            ul,
+            .btnGroup {
+                display: inline-block;
+                vertical-align: middle;
+            }
+
+            .btnGroup>button {
+                display: block;
+                margin: 10px auto;
+                cursor: pointer;
+            }
+        </style>
+    </head>
+
+    <body>
+
+        <ul class="colorLeft">
+            <li> <input type="checkbox" name="colorLeft" id="red" > <label for="red">red</label> </li>
+            <li> <input type="checkbox" name="colorLeft" id="blue" > <label for="blue">blue</label> </li>
+            <li> <input type="checkbox" name="colorLeft" id="green"> <label for="green">green</label> </li>
+            <li> <input type="checkbox" name="colorLeft" id="yellow"> <label for="yellow">yellow</label> </li>
+            <li> <input type="checkbox" name="colorLeft" id="pink"> <label for="pink">pink</label> </li>
+        </ul>
+        <div class="btnGroup">
+            <button class="rightBtn">&rarr;</button>
+            <button class="leftBtn">&larr;</button>
+        </div>
+        <ul class="colorRight">
+
+        </ul>
+
+
+
+        <script src="./lib/jquery-3.4.1.js"></script>
+        <script>
+            $('.rightBtn').click(ev => {
+                $('.colorRight').append($('.colorLeft :checked').parent())
+                // $('.colorLeft :checked,.colorRight :checked').prop('checked',false)
+                $('.colorLeft :checked,.colorRight :checked').each((index,el)=>{
+                   el.checked = false
+                })
+
+            })
+
+            $('.leftBtn').click(ev => {
+                $('.colorLeft').append($('.colorRight :checked').parent())
+                $('.colorLeft :checked,.colorRight :checked').prop('checked',false)
+            })
+           
+
+        </script>
+    </body>
+
+</html>

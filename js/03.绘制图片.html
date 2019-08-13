@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Document</title>
+        <style>
+            #canvas {
+                background: rgba(128, 128, 128, 0.267);
+            }
+        </style>
+    </head>
+
+    <body>
+        <canvas id="canvas" width="500" height="500"></canvas>
+
+        <script>
+            let canvas = document.getElementById('canvas');
+            let paint = canvas.getContext('2d');
+            paint.fillStyle='red'; //实心
+            paint.strokeStyle = 'blue'; //空心
+            paint.lineWidth = 1
+            let image =  new Image()
+            image.src = './girl.jpg'
+            image.onload = function(){
+                paint.drawImage(this,0,0 ,100,50);
+            }
+
+
+
+        </script>
+    </body>
+
+</html>

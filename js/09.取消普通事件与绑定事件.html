@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Document</title>
+        <style>
+            .btn {
+                cursor: pointer;
+            }
+
+            .btn>span {
+                font-size: 18px;
+                font-weight: bold;
+                color: red;
+                margin-left: 10px;
+            }
+        </style>
+    </head>
+
+    <body>
+        <button class="btn">只可以点击一次的按钮<span>0</span></button>
+
+        <button class="btn1">绑定事件<span>0</span></button>
+        <script>
+            var btn = document.querySelector('.btn')
+            var btn1 = document.querySelector('.btn1')
+
+            var i = 0
+            btn.onclick = function (ev) {
+                var span = ev.target.children[0]
+                if ("SPAN" == span.nodeName) {
+                    span.innerText = ++i
+                    if (10 == i) {
+                        // 取消事件
+                        btn.onclick = null
+                    }
+                }
+                // 取消事件
+                // btn.onclick = null
+            }
+
+            // 绑定事件
+            btn1.addEventListener('click', btn1Click, true)
+
+           
+
+            function btn1Click(ev) {
+                console.log(ev)
+                var span = ev.target.children[0]
+                if ("SPAN" == span.nodeName) {
+                    span.innerText = ++i
+                }
+                // 取消绑定事件
+                // btn1.removeEventListener('click',btn1Click, true)
+                delEvent(btn1, 'click', btn1Click, true)
+            }
+
+
+
+            function delEvent(obj, eventName, callback,flag) {
+                if (obj.removeEventListener) {
+                    obj.removeEventListener(eventName, callback, flag);
+                } else {
+                    obj.detachEvent('on' + eventName, callback);
+                }
+            }
+
+        </script>
+    </body>
+
+</html>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .fc{
+            display: flex;
+            /* width: 200px; */
+            height: 500px;
+            background: rgb(207, 207, 207);
+            flex-direction: row;
+            /* flex-wrap: wrap; */
+            /* align-items: center;
+            justify-content:space-around; */
+        }
+        .fc-item{
+            /* width: 300px; */
+            flex-basis: 200px;
+            height: 100px; 
+            background: pink;
+            margin: 10px;
+        }
+        .fc-item:nth-child(1){ height: 200px; 
+            flex-grow: 1;
+            /* order: 5;  */
+        }
+        .fc-item:nth-child(2){ height: 100px; f-ont-size: 3em; 
+            /* flex-grow: 1; */
+            /* order: 3 */
+        }
+        .fc-item:nth-child(3){ height: 300px;  
+            /* flex-shrink: 2; */
+         }
+    
+    </style>
+</head>
+<body>
+    <div class="fc">
+        <div class="fc-item">1</div>
+        <div class="fc-item">2中国</div>
+        <div class="fc-item">3</div>
+        
+    </div>
+
+
+</body>
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var man = {
+            name:'小明',
+            age:19,
+            sex:'男',
+            run: function() {
+                console.log(this.name + " run....")
+            }
+        }
+        // man.run()
+        // console.log(man)
+        
+        delete man.run  // 删除方法
+        delete man.sex //删除属性
+
+        console.log(man)
+        man.run()
+    
+    </script>
+</body>
+</html>

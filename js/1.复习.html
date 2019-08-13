@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .btn{
+            color: red;
+            border: 1px solid red;
+            background: #fff;
+        }
+    
+    </style>
+    <script>var iiiii;</script>
+</head>
+<body>
+    
+    <script>
+        var btn =  document.createElement('button') //1
+        var btnText =  document.createTextNode('这是一个按钮')//3
+        var btnClassAttr = document.createAttribute('class') //2
+        btnClassAttr.value = 'btn'
+        btn.appendChild(btnText)
+        btn.setAttributeNode(btnClassAttr)
+
+        // document.body.appendChild(btn)
+        var st =  document.querySelector('body script')
+        document.body.insertBefore(btn,st)
+
+        
+
+        
+
+
+       
+    </script>
+
+</body>
+</html>

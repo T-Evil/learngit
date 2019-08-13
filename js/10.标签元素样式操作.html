@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .box{
+            background: blue;
+        }
+        .colors{
+            background: orange;
+        }
+        .item{
+            background: pink;
+        }
+    </style>
+</head>
+<body>
+    <div class="box" style='background: red;'> box </div>
+
+    <ul class="colors">
+        <li>red</li>
+    </ul>
+
+    <script>
+        var box = document.querySelector('.box')
+        // 获取背景颜色 
+        console.log(box.style.background)
+        // 设置背景颜色
+        box.style.background = 'yellow'
+        box.style.color = 'red'
+
+        var cs =  document.querySelector('.colors')
+        var li =  cs.firstElementChild
+        // console.log(cs.className)
+        // console.log(li.className)
+        // cs.className += ' list'
+        li.className = 'item'
+
+
+    
+    </script>
+</body>
+</html>

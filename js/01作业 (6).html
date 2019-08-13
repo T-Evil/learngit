@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Document</title>
+        <style>
+            ul {
+                list-style: none;
+            }
+
+            ul>li {
+                display: inline-block;
+                padding: 6px 16px;
+                border-radius: 5px;
+                margin-right: 10px;
+                margin-bottom: 10px;
+                /* 不让用户选中 */
+                user-select: none;
+            }
+
+            ul>li.randomActive {
+                background: yellow;
+            }
+
+            .boy {
+                background: red;
+                color: #fff;
+            }
+
+            .girl {
+                background: green;
+                color: #fff;
+            }
+
+
+
+            .btnGroup {
+                text-align: center;
+            }
+
+            .btnGroup>button {
+                background: #fff;
+                padding: 10px 20px;
+                border: 1px solid gray;
+                outline: none;
+                cursor: pointer;
+            }
+
+            button.startBtn {
+                border-color: blue;
+                color: blue;
+            }
+
+            button.startBtn:hover {
+                box-shadow: 0 0 8px rgba(162, 162, 250, 0.753);
+            }
+
+            button.endBtn {
+                border-color: #ad0202;
+                color: #ad0202;
+            }
+
+            button.endBtn:hover {
+                box-shadow: 0 0 8px rgba(173, 2, 2, 0.439);
+            }
+            .red{
+                width: 100px;height: 100px; background: red;
+            }
+        </style>
+    </head>
+
+    <body>
+        <ul class='list'>
+            <!-- <li class="boy" title="19"><span>小明</span></li>
+            <li class="girl" title="19"><span>小明</span></li> -->
+        </ul>
+        <div class="btnGroup">
+            <button class="startBtn">开始</button>
+            <button class="endBtn">结束</button>
+        </div>
+        <script src="./lib/jquery-3.4.1.js"></script>
+
+        <script type="module">
+            import userList from './lib/list.js'
+            let t1 = null
+            //生成列表
+            createTable()
+            // 开始点名
+            $('.startBtn').click(()=>{
+                dianming() 
+            })
+            // 停止点名
+            $('.endBtn').click(()=>{
+                clearInterval(t1)
+            })
+
+            function dianming() {
+                if (null != t1) {
+                    clearInterval(t1)
+                }
+                let listItems = $('.list>li')
+                t1 = setInterval(function () {
+                    // 随机下标
+                    let index = Math.floor( Math.random() * userList.length)
+                    listItems.removeClass('randomActive')
+                    $( listItems[index] ).addClass('randomActive')
+                }, 200);
+            }
+
+
+            function createTable() {
+                let list = $('.list')
+                for (let i = 0; i < userList.length; i++) {
+                    let user = userList[i]
+                    let li = $(`
+                    <li title=${user.age}
+                        class=${user.sex == '男' ? 'boy' : 'girl'}>
+                            <span>${user.name}</span>
+                    </li>`)
+                    list.append(li)
+                }
+                return userList.length
+            }
+        </script>
+    </body>
+
+</html>

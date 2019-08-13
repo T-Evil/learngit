@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .box{
+            width: 200px;height: 200px;
+            border: 1px solid gray;
+            cursor: pointer;
+        }
+        .bgRed{
+            background: red;
+        }
+        .bgBlue{
+            background: blue;
+        }
+    </style>
+</head>
+<body>
+    <div class="box bgRed"></div>
+    <script>
+        var box =  document.querySelector('.box')
+        box.onclick = function(){
+            // box.className = 'box bgRed'
+            // this.className = 'box bgRed'
+            var className =  this.className 
+            var index =  className.indexOf('bgRed')
+            if( -1 == index){
+                this.className = 'box bgRed'
+            }else{
+                this.className = 'box bgBlue'
+            }
+        }
+            
+        // var flag = false //红、true蓝
+        // box.onmousedown =function(){
+        //     if(flag){
+        //         this.className = 'box bgRed'
+        //     }else{
+        //         this.className = 'box bgBlue'
+        //     }
+        //     flag = !flag
+        // }
+
+
+    </script>
+</body>
+</html>

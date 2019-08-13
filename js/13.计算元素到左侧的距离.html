@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Document</title>
+        <style>
+            *{ margin: 0 ;padding:0; }
+            .b1,.b2,.b3,.b4{
+                padding: 10px;
+                border: 1px solid #000;
+            }
+            .b1{ background: rgba(119, 119, 201, 0.849);}
+            .b2{ background: rgb(233, 118, 118);}
+            .b3{ background: rgb(85, 230, 85);}
+            .b4{ background: rgb(228, 207, 210);}
+            
+        
+        </style>
+    </head>
+
+    <body>
+
+        <div class="b1">
+            <div class="b2" style="position:relative">
+                <div class="b3">
+                    <div class="b4">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <script>
+
+            var b4 =  document.querySelector('.b4')
+            console.log(getLeft(b4))
+            console.log(getTop(b4))
+
+
+            function getLeft(element) {
+                var result = 0;
+                while (element) {
+                    result += element.offsetLeft;
+                    element = element.offsetParent;
+
+                }
+                return result;
+            }
+            function getTop(element) {
+                var result = 0;
+                while (element) {
+                    result += element.offsetTop;
+                    element = element.offsetParent;
+
+                }
+                return result;
+            }
+
+
+        </script>
+    </body>
+
+</html>
