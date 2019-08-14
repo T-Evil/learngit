@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Document</title>
+    </head>
+
+    <body>
+        <script>
+            function ajax(opt) {
+                return new Promise(function (resolve, reject) {
+                    // let fData = new FormData()
+                    let data = ''
+                    for (const key in opt.data) {
+                        // fData.append(key, opt.data[key])
+                        data += `${key}=${opt.data[key]}&`
+                    }
+                    let method = opt.method.toLowerCase()
+                    if ('post' !== method) {
+                        if (-1 == method.indexOf('get')) {
+                            reject('请求方式错误')
+                            return
+                        } else {
+                            opt.url += '?' + data
+                        }
+                    }
+
+                    let xhr = new XMLHttpRequest()
+                    xhr.open(opt.method, opt.url, true)
+                    xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+                    xhr.send(data)
+                    xhr.onreadystatechange = function () {
+                        if (4 != this.readyState) {
+                            return
+                        }
+                        if (200 == this.status) {
+                            resolve(this.responseText)
+                        } else {
+                            reject(this.status)
+                        }
+                    }
+
+                })
+            }
+
+            let opt = {
+                url: 'http://192.168.5.4/0624/ajaxDemo3.php',
+                method: 'post',
+                data: {
+                    name: '小明',
+                    age: 19
+                }
+            }
+
+            ajax(opt)
+                .then(res => {
+                    console.log(res)
+                }).catch(err => {
+                    console.log(err)
+                })
+
+        </script>
+    </body>
+
+</html>

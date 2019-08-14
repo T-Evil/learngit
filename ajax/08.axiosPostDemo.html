@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Document</title>
+    </head>
+
+    <body>
+        <!-- <script src="./lib/axios.min.js"></script> -->
+        <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+
+        <script>
+            let url = 'http://192.168.5.4/0624/ajaxDemo3.php'
+            // 请求拦截
+            axios.interceptors.request.use(
+                (config) => {
+
+                    // 兼容 post 跨域问题
+                    if (config.method === 'post') {
+
+                        // 修改 Content-Type
+                        config.headers['Content-Type'] =
+                            'application/x-www-form-urlencoded';
+
+                        // 将对象参数转换为序列化的 URL 形式（key=val&key=val）
+                        config.data = JSON.stringify(config.data);
+                    }
+                    return config;
+                },
+                (error) => {
+                    console.log(error);
+                    return Promise.reject(error);
+                }
+            );
+            
+
+            axios({
+                method: 'post',
+                url: url,
+                data: {
+                    name: "mingming",
+                    age: 98
+                },
+                withCredentials: true,
+                headers: { 'Content-type': 'application/x-www-form-urlencoded' },
+                transformRequest: [function (data) {
+                    let ret = ''
+                    for (let it in data) {
+                        ret += encodeURIComponent(it) + '=' + encodeURIComponent(data[it]) + '&'
+                    }
+                    return ret
+                }],
+
+            }).then(res => {
+                console.log(res)
+            }).catch(err => {
+                console.log(err)
+            })
+
+        </script>
+    </body>
+
+</html>

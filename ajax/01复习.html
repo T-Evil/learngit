@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <button class="btn">btn</button>
+    <script>
+        // 接收服务器端返回的数据
+        function queryAll(arg){
+            console.log(arg)
+            let script = document.querySelector('.queryAll')
+            document.body.removeChild(script)
+        }
+    
+    </script>
+    <!-- <script src="http://192.168.5.4/0624/jsonp.php?jsonpcallback=queryAll"></script> -->
+    <script>
+        document.querySelector('.btn').onclick =function (){
+            let script =  document.createElement('script')
+            script.className = 'queryAll'
+            script.src = 'http://192.168.5.4/0624/jsonp.php?jsonpcallback=queryAll'
+            // 加载服务器端文件，该服务器返回js语句queryAll() ，所以直接调用该方法
+            document.body.appendChild(script)
+        }
+    </script>
+</body>
+</html>
