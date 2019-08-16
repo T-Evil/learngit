@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Document</title>
+        <style>
+         textarea{
+             width: 300px; 
+             height: 200px;
+         }
+        </style>
+    </head>
+
+    <body>
+        <div class="root">
+            <input type="text" v-model.lazy='oInput' @input='oInputClick'>
+            <input type="number" v-model.number='oNum' @input='oNumClick'>
+            <p>{{oInput}}</p>
+            <select v-model='city'>
+                <option value="zh" >深圳</option>
+                <option value="gz">广州</option>
+                <option value="sh">上海</option>
+            </select>
+            <p>{{city}}</p>
+
+            <input type="checkbox" name="color" v-model='colors.red' true-value="true" false-value="false"> 
+            <input type="checkbox" name="color" v-model='colors.blue' true-value="true" false-value="false"> 
+            <input type="checkbox" name="color" v-model='colors.green' true-value="true" false-value="false"> 
+            <input type="checkbox" name="color" v-model='colors.yellow' true-value="true" false-value="false"> 
+            <p>{{ colors }}</p>
+
+            <input type="radio" name="bg" v-model='bgValue' value="1">
+            <input type="radio" name="bg" v-model='bgValue' value="2">
+            <input type="radio" name="bg" v-model='bgValue' value="3">
+            <input type="radio" name="bg" v-model='bgValue' value="4">
+
+            <p>{{bgValue}}</p>
+
+
+            <textarea v-model='tt'></textarea>
+            <p>{{tt}}</p>
+        </div>
+        <script src="./lib/vue.js"></script>
+        <script>
+            new Vue({
+                el: '.root',
+                data:{
+                    oInput:'',
+                    oNum:0,
+                    city:'sh',
+                    colors:{
+                        red:true,
+                        blue:false,
+                        green:true,
+                        yellow:true,
+                    },
+                    bgValue:4,
+                    tt:'这是一个文本域'
+                },
+                methods: {
+                    oInputClick(ev){
+                       console.log(ev.target.value) 
+                    },
+                    oNumClick(){
+                        console.log(typeof this.oNum)
+                    }
+                },
+                
+            })
+
+        </script>
+    </body>
+
+</html>
