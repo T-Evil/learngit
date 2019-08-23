@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Document</title>
+    </head>
+
+    <body>
+        <div id='app'>
+            <my-cp @my-click='myclick'></my-cp>
+
+            <div>
+                <span>{{ username }}</span>
+                <span>{{ password}}</span>
+            </div>
+            <!-- 不能被触发 -->
+            <my-cp2 @my-click='myclick2'></my-cp2>
+        </div>
+        <script src="./lib/vue.js"></script>
+        <script>
+            Vue.component('my-cp', {
+                template: `
+            <div>
+                <button @click='btnClick'> {{ btnText }} </button> 
+                <input type='text' v-model='username'>
+                <input type='text' v-model='password'>
+            </div>
+            `,
+                data() {
+                    return {
+                        btnText: '按钮',
+                        username: '',
+                        password: '',
+                    }
+                },
+                methods: {
+                    btnClick() {
+                        this.$emit('my-click', {
+                            username: this.username,
+                            password: this.password,
+                        })
+                    }
+                },
+            })
+
+            let myCp2 = {
+                template: `
+            <div>
+                <h2>组件2</h2>    
+            </div>
+            `
+            }
+
+            new Vue({
+                el: '#app',
+                components: {
+                    "my-cp2": myCp2,
+                },
+                data: {
+                    username: '',
+                    password: ''
+                },
+                methods: {
+                    myclick(...args) {
+                        console.log(args)
+                        this.username = args[0]['username']
+                        this.password = args[0]['password']
+                    },
+
+                    myclick2(...args) {
+                        console.log(args)
+
+                    }
+                }
+            })
+        </script>
+    </body>
+
+</html>

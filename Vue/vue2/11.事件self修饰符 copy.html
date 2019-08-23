@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Document</title>
+        <style>
+            .box {
+                width: 100px;
+            height: 100px;
+                background: red;
+                margin-bottom: 2px;
+                padding: 20px;
+            }
+            .box1{
+                height: 30px;
+                background: blue;
+            }
+
+            
+        </style>
+    </head>
+
+    <body>
+        <div class="root">
+            <div class="box" v-on:click.self ='boxClick'>
+                <div class="box1"></div>
+            </div>
+
+        </div>
+        <script src="./lib/vue.js"></script>
+        <script>
+            new Vue({
+                el: '.root',
+                methods: {
+
+                    boxClick() {
+                        console.log('box1')
+                    },
+                    
+                  
+                },
+            })
+
+        </script>
+    </body>
+
+</html>

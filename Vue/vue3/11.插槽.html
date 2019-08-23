@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <my-cp>
+           hello 
+           <p>hello p</p>
+           <h5>hello h5</h5>
+        </my-cp>
+    </div>
+   <script src="./lib/vue.js"></script>
+   <script>
+       Vue.component('my-cp',{
+           template:`
+           <div>
+                <h3>插槽</h3>
+                <h6>h6</h6>
+                <!-- 用于分发接收到的数据 -->
+                <slot></slot>
+            </div>
+           `
+       })
+
+
+       new Vue({
+           el:'#app',
+       })
+    
+   </script>
+</body>
+</html>

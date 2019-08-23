@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Document</title>
+        <style>
+            .box {
+                width: 100px;
+                height: 100px;
+                background: red;
+            }
+
+            .acrite {
+                background: green;
+            }
+        </style>
+    </head>
+
+    <body>
+        <div class="root">
+            <div class="box" :class='{"acrite": isactive}' @click='boxclick'></div>
+            <div :class='[c1,c2]'></div>
+        </div>
+        <script src="./lib/vue.js"></script>
+        <script>
+            new Vue({
+                el: '.root',
+                data:{
+                    isactive:true,
+                    c1:'hello',
+                    c2:"welcome"
+                },
+                methods: {
+                    boxclick(){
+                       this.isactive = !this.isactive 
+                       this.c1 = 'her'
+                    }
+                },
+            })
+
+        </script>
+    </body>
+
+</html>

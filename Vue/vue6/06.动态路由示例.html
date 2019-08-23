@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Document</title>
+        <style>
+            .active-css {
+                color: red;
+            }
+        </style>
+    </head>
+
+    <body>
+        <div id="app">
+            <ul>
+                <li>
+                    <router-link to='/home'>首页</router-link>
+                </li>
+                <li>
+                    <router-link to='/food/fruits'>水果</router-link>
+                </li>
+                <li>
+                    <router-link to='/food/greens'>蔬菜</router-link>
+                </li>
+            </ul>
+            <router-view></router-view>
+
+        </div>
+        <script src="./node_modules/vue/dist/vue.js"></script>
+        <script src="./node_modules/vue-router/dist/vue-router.js"></script>
+        <script>
+            let Home = {
+                template: `
+                <div>
+                    <h2>home</h2>    
+                </div>`,
+            }
+
+            let Food = {
+                template: `
+                <div>
+                    <h2>食物</h2>   
+                    <ul>
+                        <li v-for='(food, i) in foodList' :key='i'> {{food.name}}  </li>  
+                    </ul>
+                </div>`,
+                data() {
+                    return {
+                        foodList: []
+                    }
+                },
+              
+                beforeRouteUpdate(to, from, next) {
+                   this.ajax( to.params.category, (err,res)=>{
+                        if(err){
+                            console.log(err)
+                            return
+                        }
+                        let list = []
+                        try {
+                            list =  JSON.parse(res)
+                        } catch (error) {
+                        }
+                        this.foodList = list
+                    })
+                  next()
+                },
+                
+                created() {
+                    let category = this.$route.params.category
+                    let This = this
+                    this.ajax(category, function (err, res) {
+                        if (err) {
+                            console.log(err)
+                            return
+                        }
+                        let list = []
+                        try {
+                            list = JSON.parse(res)
+                        } catch (error) {
+
+                        }
+
+                        This.foodList = list
+                    })
+                    // this.ajax( category, (err,res)=>{
+                    //     if(err){
+                    //         console.log(err)
+                    //         return
+                    //     }
+                    //     let list = []
+                    //     try {
+                    //         list =  JSON.parse(res)
+                    //     } catch (error) {
+                    //     }
+                    //     this.foodList = list
+                    // })
+                },
+                methods: {
+                    ajax(category, callback) {
+                        let xhr = new XMLHttpRequest()
+                        const url = `http://192.168.7.177/food/food.php?food=${category}`
+                        xhr.open('get', url, true)
+                        xhr.send()
+                        xhr.onreadystatechange = function () {
+                            if (4 == this.readyState && 200 == this.status) {
+                                callback(null, this.responseText)
+                            } else if (4 == this.readyState && 200 != this.status) {
+                                callback(this.status, null)
+                            }
+                        }
+
+                    }
+                },
+            }
+
+            let routes = [
+                { path: '/home', component: Home },
+                { path: '/food/:category', component: Food },
+                { path: '/*', redirect: '/home' },
+            ]
+            // routes 路由配置规则
+            let router = new VueRouter({
+                routes,
+                // 设置router-link 链接激活时类名称
+                linkActiveClass: 'active-css',
+            })
+
+            new Vue({
+                el: '#app',
+                router
+            })
+
+        </script>
+
+    </body>
+
+</html>

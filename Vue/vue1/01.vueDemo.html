@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Document</title>
+    </head>
+
+    <body>
+        <div>
+            <input type="text" class="userInput"> 
+            <p class="show"></p>
+        </div>
+
+        <div id="root">
+            <input type="text" v-model='msg'>
+            <p>{{ msg }}</p>
+
+            
+
+
+        </div>
+
+        <script src="https://cdn.jsdelivr.net/npm/vue@2.6.10/dist/vue.js"></script>
+        <script>
+            new Vue({
+                el: "#root", //vue实例绑定一个html模块
+                data: {
+                    msg: "hello vue!"
+                }
+            })
+
+            let uInput =  document.querySelector('.userInput')
+            let show =  document.querySelector('.show')
+            uInput.oninput = function(){
+                show.innerText = this.value
+            }
+        </script>
+    </body>
+
+</html>

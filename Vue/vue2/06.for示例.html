@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Document</title>
+        <style>
+            ul{ 
+                list-style: none;
+            }
+            ul>li{
+                display: inline-block;
+                width: 200px;
+                overflow:hidden;
+            }
+            ul img{
+                width: 200px; height: auto;
+
+            }
+            .price{
+                font-size: 1.5em;
+                color: red;
+            }
+            .desc{
+                color: #666;
+            }
+        
+        </style>
+    </head>
+
+    <body>
+        <div class="root">
+            <ul>
+                <li v-for='(it, k) in list' :key='k'>
+                    <img :src="it.imgUrl" alt="">
+                    <p class="price">${{it.price}}</p>
+                    <p class="desc">{{it.desc}}</p>
+                </li>
+            </ul>
+        </div>
+        <script src="./lib/vue.js"></script>
+        <script>
+            new Vue({
+                el: '.root',
+                data: {
+                    list: [
+                        {
+                            imgUrl: 'https://img12.360buyimg.com/n7/jfs/t1/79706/18/6581/112584/5d492587E32ba70ae/47fdb0779e7dad8a.jpg',
+                            price:'123',
+                            desc:'一加 OnePlus 7 Pro 2K+90Hz 流体屏 骁龙855旗舰 4800万超广角三摄 '
+                        },
+                        {
+                            imgUrl: 'https://img12.360buyimg.com/n7/jfs/t1/79706/18/6581/112584/5d492587E32ba70ae/47fdb0779e7dad8a.jpg',
+                            price:'345',
+                            desc:'一加 OnePlus 7 Pro 2K+90Hz 流体屏 骁龙855旗舰 4800万超广角三摄 '
+                        },
+                        {
+                            imgUrl: 'https://img12.360buyimg.com/n7/jfs/t1/79706/18/6581/112584/5d492587E32ba70ae/47fdb0779e7dad8a.jpg',
+                            price:'123',
+                            desc:'一加 OnePlus 7 Pro 2K+90Hz 流体屏 骁龙855旗舰 4800万超广角三摄 '
+                        },
+                        {
+                            imgUrl: 'https://img12.360buyimg.com/n7/jfs/t1/79706/18/6581/112584/5d492587E32ba70ae/47fdb0779e7dad8a.jpg',
+                            price:'22',
+                            desc:'一加 OnePlus 7 Pro 2K+90Hz 流体屏 骁龙855旗舰 4800万超广角三摄 '
+                        },
+                        {
+                            imgUrl: 'https://img12.360buyimg.com/n7/jfs/t1/79706/18/6581/112584/5d492587E32ba70ae/47fdb0779e7dad8a.jpg',
+                            price:'55',
+                            desc:'一加 OnePlus 7 Pro 2K+90Hz 流体屏 骁龙855旗舰 4800万超广角三摄 '
+                        },
+                        {
+                            imgUrl: 'https://img12.360buyimg.com/n7/jfs/t1/79706/18/6581/112584/5d492587E32ba70ae/47fdb0779e7dad8a.jpg',
+                            price:'11',
+                            desc:'一加 OnePlus 7 Pro 2K+90Hz 流体屏 骁龙855旗舰 4800万超广角三摄 '
+                        },
+                        {
+                            imgUrl: 'https://img12.360buyimg.com/n7/jfs/t1/79706/18/6581/112584/5d492587E32ba70ae/47fdb0779e7dad8a.jpg',
+                            price:'88',
+                            desc:'一加 OnePlus 7 Pro 2K+90Hz 流体屏 骁龙855旗舰 4800万超广角三摄 '
+                        },
+                        {
+                            imgUrl: 'https://img12.360buyimg.com/n7/jfs/t1/79706/18/6581/112584/5d492587E32ba70ae/47fdb0779e7dad8a.jpg',
+                            price:'11',
+                            desc:'一加 OnePlus 7 Pro 2K+90Hz 流体屏 骁龙855旗舰 4800万超广角三摄 '
+                        }
+                        
+                    ]
+                }
+
+            })
+
+        </script>
+    </body>
+
+</html>

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .myNav ul{ list-style: none;  }
+        .myNav li{ display: inline-block; margin: 0 20px; }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <my-nav></my-nav>
+    </div>
+   <script src="./lib/vue.js"></script>
+   <script>
+       Vue.component('my-nav', {
+           template:`
+            <div class='myNav'>
+                <ul>
+                    <li v-for='(item, i) in list' :key='i'> 
+                        <a href='javascript: ;' @click='navbarClick($event, item.url)'> {{ item.name }} </a>
+                    </li>
+                </ul>
+            </div>
+           `,
+           data: function(){
+               return {
+                   list:[
+                       { name:'首页1',url:'1' },
+                       { name:'首页',url:'2' },
+                       { name:'首页',url:'3' },
+                       { name:'首页',url:'4' },
+                       { name:'首页',url:'5' },
+                       { name:'首页',url:'6' },
+                       { name:'首页5',url:'7' },
+                   ]
+               }
+           },
+           methods: {
+            navbarClick(...args){
+                console.log(args)
+            }
+           },
+
+       })
+
+       new Vue({
+           el:'#app',
+           data:{
+
+           }
+       })
+    
+   </script>
+</body>
+</html>

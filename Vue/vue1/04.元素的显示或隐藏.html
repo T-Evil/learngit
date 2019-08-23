@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Document</title>
+        <style>
+            .box1 {
+                width: 100px;
+                height: 100px;
+                background: red;
+            }
+        </style>
+    </head>
+
+    <body>
+        <div class="app">
+            <button @click='btnclick'>显示</button>
+            <div class="box1" v-show="boxShow">show</div>
+            <div class="box1" v-if="boxShow">if</div>
+
+            <select v-model='color'>
+                <option value="red">red</option>
+                <option value="blue">blue</option>
+                <option value="pink">pink</option>
+                <option value="other">other</option>
+
+            </select>
+            <ul>
+                <li v-if='"red" == color'>red</li>
+                <li v-else-if='"blue" == color'>blue</li>
+                <li v-else-if='"pink" == color'>pink</li>
+                <li v-else>yellow</li>
+            </ul>
+
+
+        </div>
+        <script src="./node_modules/vue/dist/vue.js"></script>
+        <script>
+            let app = new Vue({
+                el: ".app",
+                data: {
+                    boxShow: true,
+                    color: 'red'
+                    
+                },
+                methods: {
+                    // 按钮事件
+                    btnclick() {
+                        this.boxShow
+                    }
+                },
+            })
+
+
+        </script>
+    </body>
+
+</html>

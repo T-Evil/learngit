@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Document</title>
+        <style>
+            .box {
+                width: 500px;
+                height: 200px;
+                background: rgba(128, 128, 128, 0.192);
+                border: 1px solid rgba(128, 128, 128, 0.192);
+                overflow: hidden;
+                position: relative;
+            }
+
+            ul {
+                list-style: none;
+                margin: 0;
+                padding: 0 20px;
+                height: 40px;
+                line-height: 40px;
+                background: #fff;
+
+            }
+
+            .box li {
+                display: inline-block;
+                margin: 0 20px;
+                cursor: pointer;
+            }
+
+            .box li:hover {
+                color: blue;
+            }
+
+            [class*=coent] {
+                height: 160px;
+                width: 100%;
+                position: absolute;
+                left: 0;
+                top: 40px;
+
+            }
+
+            .coent-1 {
+                background: red;
+            }
+
+            .coent-2 {
+                background: blue;
+            }
+
+            .coent-3 {
+                background: green;
+            }
+        </style>
+    </head>
+
+    <body>
+        <div class="root">
+            <div class="box">
+                <ul>
+                    <li @click="item1Click">空调</li>
+                    <li @click="item2Click">空调</li>
+                    <li @click="item3Click">空调</li>
+                </ul>
+                <div class="coent-1" v-show='1 == boxItemShow'>1</div>
+                <div class="coent-2" v-show='2 == boxItemShow'>2</div>
+                <div class="coent-3" v-show='3 == boxItemShow'>3</div>
+            </div>
+
+        </div>
+        <script src="./lib/vue.js"></script>
+        <script>
+            new Vue({
+                el: '.root',
+                data:{
+                    boxItemShow:1,
+                },
+                methods: {
+                    item1Click() {
+                        this.boxItemShow = 1
+                    },
+                    item2Click() {
+                        this.boxItemShow = 2
+                    },
+                    item3Click() {
+                        this.boxItemShow = 3
+                    },
+                },
+            })
+
+        </script>
+    </body>
+
+</html>

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Document</title>
+        <style>
+         .rview{
+             height: 200px;
+             border: 1px solid gray;
+             margin-bottom: 20px;
+         }
+        </style>
+    </head>
+
+    <body>
+        <div id="app">
+            <ul>
+                <li> <router-link to='/home'>home</router-link> </li>
+                <li> <router-link to="/about">about</router-link> </li>
+            </ul>
+            <router-view class="rview"></router-view>
+            <router-view class="rview" name='a'></router-view>
+            <router-view class="rview" name='b'></router-view>
+           
+        </div>
+        <script src="./node_modules/vue/dist/vue.js"></script>
+        <script src="./node_modules/vue-router/dist/vue-router.js"></script>
+        <script>
+            let Home = { template:`<div>home</div>` }
+            let About = { template:`<div>About</div>` }
+            let AboutFood = { template:`<div>食物</div>` }
+            let AboutCloth = { template:`<div>衣服</div>` }
+            let routes = [
+                { path:'/home', component:Home },
+                { path:'/about',
+                 components:{
+                    default:About,
+                    a:AboutFood,
+                    b:AboutCloth
+                }},
+            ]
+
+            let router = new VueRouter({ routes })
+
+            new Vue({
+                el: '#app',
+                router,
+            })
+
+        </script>
+
+    </body>
+
+</html>
