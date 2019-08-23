@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Document</title>
+    </head>
+
+    <body>
+        <div id='app'>
+
+            <div id="box"> {{ msg }} </div>
+            <button @click='btnClick'>销毁当前实例</button>
+            <input type="text" v-model='msg'>
+            <button @click=btnclick2>强制渲染</button>
+
+        </div>
+        <script src="./lib/vue.js"></script>
+        <script>
+
+
+            let app = new Vue({
+                // el:'#app',
+                data: {
+                    msg: 'hello 生命周期'
+                },
+                methods: {
+                    btnClick() {
+                        this.$destroy()
+                    },
+                    btnclick2(){
+                        this.$forceUpdate()
+                    }
+                },
+                // 初始化事件对象和生命周期方法
+                beforeCreate() {
+                    console.log('beforeCreate--->1')
+                    // console.log(this.msg) 
+                },
+                // 数据初始化完毕，并且所有数据都经getter,setter处理，watch/event 事件初始化完成，在实例挂载之前
+                // 这个回调中可以操作数据。
+                created() {
+                    console.log('created--->2')
+                    // console.log(this.msg) 
+                },
+                beforeMount() {
+                    console.log('beforeMount--->3')
+                    // console.log( document.querySelector('#box') )
+
+                },
+                mounted() {
+                    console.log('mounted--->4')
+                    // console.log( document.querySelector('#box') ) 
+                },
+
+                beforeDestroy() {
+                    console.log('beforeDestroy--->5')
+                },
+                destroyed() {
+                    console.log('destroyed--->6')
+                },
+                beforeUpdate() {
+                    console.log('beforeUpdate--->7')
+                },
+                updated() {
+                    console.log('updated--->8')
+                },
+            })
+            app.$mount('#app')
+        </script>
+    </body>
+
+</html>

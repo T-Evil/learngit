@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Document</title>
+    </head>
+
+    <body>
+        <!-- html模板 -->
+        <div id="app">
+           <hello-cp></hello-cp> 
+           <my-cp></my-cp>
+        </div>
+        <script src="./lib/vue.js"></script>
+        <script>
+            // 全局注册的组件必须在根实例之前
+             Vue.component('helloCp', {
+                // js模板
+                template:'<h1>子组件</h1>'
+            })
+            Vue.component('myCp', {
+                // js模板
+                template:`<div>
+                    <helloCp></helloCp>
+                </div>`
+            })
+
+            new Vue({
+                el: '#app',
+            })
+
+           
+
+        </script>
+    </body>
+
+</html>

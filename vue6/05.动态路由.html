@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Document</title>
+        <style>
+            .router-link-active {
+                color: red;
+            }
+        </style>
+    </head>
+
+    <body>
+        <div id="app">
+            <ul>
+                <li>
+                    <router-link to='/home'>首页</router-link>
+                </li>
+                <li><router-link to='/about/123'>关于123</router-link></li>
+                <li><router-link to='/about/456'>关于456</router-link></li>
+            </ul>
+            <router-view></router-view>
+
+        </div>
+        <script src="./node_modules/vue/dist/vue.js"></script>
+        <script src="./node_modules/vue-router/dist/vue-router.js"></script>
+        <script>
+            let Home = {
+                template: `
+                <div>
+                    <h2>home</h2>    
+                </div>`,
+            }
+
+            let About = {
+                template: `
+                <div>
+                    <h2>About</h2>    
+                </div>`,
+                created() {
+                    console.log(this.$route.params)
+                },
+            }
+
+            let routes = [
+                { path: '/home', component: Home },
+                { path: '/about/:myarg', component: About },
+                { path: '/*', redirect: '/home' },
+            ]
+            // routes 路由配置规则
+            let router = new VueRouter({
+                routes,
+                // 设置router-link 链接激活时类名称
+                linkActiveClass: 'active-css',
+                linkExactActiveClass: 'ExactActive'
+            })
+
+            new Vue({
+                el: '#app',
+                router
+            })
+
+        </script>
+
+    </body>
+
+</html>

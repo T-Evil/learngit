@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <my-cp>
+            <template v-slot:header>
+                <ul>
+                    <li>home</li>
+                    <li>about</li>
+                </ul>
+            </template>
+           hello 
+           <p>hello p</p>
+           <h5>hello h5</h5>
+
+            <template v-slot:footer>
+                <h2>这是底脚</h2>
+                <h2>1232323</h2>
+            </template>
+
+        </my-cp>
+    </div>
+   <script src="./lib/vue.js"></script>
+   <script>
+       Vue.component('my-cp',{
+           template:`
+           <div>
+                <slot name='header'></slot>
+
+                <h3>插槽</h3>
+                <slot></slot>
+                <h3>----------------------</h3>
+                <slot name='footer'></slot>
+               
+            </div>
+           `
+       })
+
+
+       new Vue({
+           el:'#app',
+       })
+    
+   </script>
+</body>
+</html>

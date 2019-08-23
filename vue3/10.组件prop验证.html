@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Document</title>
+    </head>
+
+    <body>
+        <div id="app">
+            <input type="number" v-model.number='num1'>
+            <input type="number" v-model.number='num2'>
+           <my-cp :num2='num2' ></my-cp>
+        </div>
+
+        <script src="./lib/vue.js"></script>
+        <script>
+            let myCp={
+                props:{
+                    'num1':{
+                        type:Number,
+                        default: 99999
+                    },
+                    'num2':[Number,Boolean]
+                },
+                template:`<div>
+                    <p> {{ num1 + num2 }} </p>
+                </div>`,
+            }
+
+            new Vue({
+                el: '#app',
+                components:{
+                   "my-cp":myCp
+                },
+                data:{
+                    num1:0,
+                    num2:true,
+                },
+            })
+
+        </script>
+    </body>
+
+</html>

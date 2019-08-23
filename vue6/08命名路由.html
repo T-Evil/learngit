@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Document</title>
+        <style>
+         
+        </style>
+    </head>
+
+    <body>
+        <div id="app">
+            <ul>
+                <li> <router-link :to="{name:'home'}">home</router-link> </li>
+                <li> <router-link :to="{name:'about', params: { id: 123 }}">about</router-link> </li>
+            </ul>
+            <router-view></router-view>
+        </div>
+        <script src="./node_modules/vue/dist/vue.js"></script>
+        <script src="./node_modules/vue-router/dist/vue-router.js"></script>
+        <script>
+            let Home = { template:`<div>home</div>` }
+            let About = { template:`<div>About</div>` }
+            let routes = [
+                { path:'/home', component:Home , name:'home' },
+                { path:'/about/:id', component:About ,name:'about' },
+            ]
+
+            let router = new VueRouter({ routes })
+
+            new Vue({
+                el: '#app',
+                router,
+            })
+
+        </script>
+
+    </body>
+
+</html>
